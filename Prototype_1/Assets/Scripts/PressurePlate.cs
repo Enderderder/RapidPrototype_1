@@ -7,8 +7,11 @@ public class PressurePlate : MonoBehaviour
 	// Boolean that tells if the pressure plate is being stand on or not
 	public bool pressureState;
 
+    public Door door;
+
 	// Sprite array that shows the state of the pressure plate
-	public Sprite[] sprites;
+    public Sprite pressurePlateUpSprite;
+    public Sprite pressurePlateDownSprite;
 
 	void Start ()
 	{
@@ -21,16 +24,15 @@ public class PressurePlate : MonoBehaviour
 		
 	}
 
-
 	private void OnTriggerEnter2D(Collider2D _other)
 	{
-		//// Get the tag of the target when trigger collide
+		//// Get the tag of the target when trigger collider
 		//GameObject otherObject = _other.gameObject;
 		
 		//// See if anything is on the pressure plate
 		//if (otherObject.tag == "Player" 
 		//	|| otherObject.tag == "Slime"
-		//	|| otherObject.tag == "WorldObejct")
+		//	|| otherObject.tag == "WorldObject")
 		//{
 		//	PressurePlateDown();
 		//}
@@ -56,11 +58,13 @@ public class PressurePlate : MonoBehaviour
 
 	private void PressurePlateDown()
 	{
-		GetComponent<SpriteRenderer>().sprite = sprites[1];
+		GetComponent<SpriteRenderer>().sprite = pressurePlateUpSprite;
+        door.isOpen = true;
 	}
 
 	private void PressurePlateUp()
 	{
-		GetComponent<SpriteRenderer>().sprite = sprites[0];
+		GetComponent<SpriteRenderer>().sprite = pressurePlateDownSprite;
+        door.isOpen = false;
 	}
 }
