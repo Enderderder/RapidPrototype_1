@@ -22,7 +22,7 @@ public class PressurePlate : MonoBehaviour
 	}
 
 
-	private void OnTriggerEnter2D(Collider _other)
+	private void OnTriggerEnter2D(Collider2D _other)
 	{
 		//// Get the tag of the target when trigger collide
 		//GameObject otherObject = _other.gameObject;
@@ -38,7 +38,7 @@ public class PressurePlate : MonoBehaviour
 		PressurePlateDown();
 	}
 
-	private void OnTriggerExit2D(Collider _other)
+	private void OnTriggerExit2D(Collider2D _other)
 	{
 		//// Get the tag of the target when trigger collide
 		//GameObject otherObject = _other.gameObject;
