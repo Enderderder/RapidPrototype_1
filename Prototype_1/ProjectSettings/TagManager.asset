@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Crate
   - Slime
   layers:
   - Default
