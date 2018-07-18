@@ -22,10 +22,17 @@ public class PlayerMovement : MonoBehaviour {
         horizontalCurrSpeed = Input.GetAxisRaw("Horizontal");
         verticalCurrSpeed = Input.GetAxisRaw("Vertical");
 
+        if (horizontalCurrSpeed < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (horizontalCurrSpeed > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+
         resultMovement = new Vector2(horizontalCurrSpeed, verticalCurrSpeed);
         resultMovement = resultMovement.normalized * moveSpeed;
-
-        //resultMovement = new Vector2(horizontalCurrSpeed * moveSpeed, verticalCurrSpeed * moveSpeed);
     }
 
     public void FixedUpdate()
