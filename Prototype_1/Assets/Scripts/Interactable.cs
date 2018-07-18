@@ -10,14 +10,14 @@ public class Interactable : MonoBehaviour
 
     // Private
 
-    private GameObject rootGameObject;
+    //private GameObject rootGameObject;
 
 
     // ===============================
 
 	void Start ()
     {
-		rootGameObject = this.transform.root.gameObject;
+		//rootGameObject = this.transform.root.gameObject;
 	}
 	
 	void Update ()
