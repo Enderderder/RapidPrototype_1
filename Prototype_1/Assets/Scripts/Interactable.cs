@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour {
+public class Interactable : MonoBehaviour
+{
+    // Variables Use Inside the Class
 
-	// Use this for initialization
-	void Start () {
-		
+    // Public
+
+    // Private
+
+    private GameObject rootGameObject;
+
+
+    // ===============================
+
+	void Start ()
+    {
+		rootGameObject = this.transform.root.gameObject;
 	}
 	
-	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }
