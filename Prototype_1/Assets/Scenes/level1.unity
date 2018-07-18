@@ -449,28 +449,6 @@ Prefab:
       propertyPath: door
       value: 
       objectReference: {fileID: 1992147854}
-    - target: {fileID: 114218436274417334, guid: d37220b9a93e2d64696f17a52fc85f64,
-        type: 2}
-      propertyPath: pressurePlateDownSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e11e2c99ad52cf840969eef8965d7f56,
-        type: 3}
-    - target: {fileID: 114218436274417334, guid: d37220b9a93e2d64696f17a52fc85f64,
-        type: 2}
-      propertyPath: pressurePlateUpSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 122bc3f1acef39d4ea02fb21ca83d3d3,
-        type: 3}
-    - target: {fileID: 212230612232658208, guid: d37220b9a93e2d64696f17a52fc85f64,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 806432499
-      objectReference: {fileID: 0}
-    - target: {fileID: 212230612232658208, guid: d37220b9a93e2d64696f17a52fc85f64,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d37220b9a93e2d64696f17a52fc85f64, type: 2}
   m_IsPrefabParent: 0
@@ -1983,7 +1961,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4474878993051384, guid: 2cc903746dd5d654aa61680b686f0b93, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -378
+      value: -270
       objectReference: {fileID: 0}
     - target: {fileID: 4474878993051384, guid: 2cc903746dd5d654aa61680b686f0b93, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2012,6 +1990,16 @@ Prefab:
     - target: {fileID: 4474878993051384, guid: 2cc903746dd5d654aa61680b686f0b93, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 212689221231718104, guid: 2cc903746dd5d654aa61680b686f0b93,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -1277386145
+      objectReference: {fileID: 0}
+    - target: {fileID: 212689221231718104, guid: 2cc903746dd5d654aa61680b686f0b93,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2cc903746dd5d654aa61680b686f0b93, type: 2}
@@ -8686,7 +8674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed44dcef75f6f4439cb5f850fe16e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
   OpenSprite: {fileID: 21300000, guid: f5d33f5463341de4d9d3e847b0ec0bd7, type: 3}
   ClosedSprite: {fileID: 21300000, guid: cd2d00c12cab64746aebfa85e1b7118d, type: 3}
 --- !u!212 &1992147855
