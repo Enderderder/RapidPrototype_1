@@ -135,7 +135,7 @@ Grid:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 11643938}
   m_Enabled: 1
-  m_CellSize: {x: 100, y: 100, z: 0}
+  m_CellSize: {x: 108, y: 108, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -251,7 +251,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &421852003
 GameObject:
@@ -304,15 +304,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.w
@@ -320,8 +320,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114152911850500260, guid: d208e8098b8e25d41b63dffcfee8b55d,
+        type: 2}
+      propertyPath: gridLayout
+      value: 
+      objectReference: {fileID: 11643939}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
   m_IsPrefabParent: 0
@@ -362,7 +367,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4440023501886186, guid: d37220b9a93e2d64696f17a52fc85f64, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 212230612232658208, guid: d37220b9a93e2d64696f17a52fc85f64,
         type: 2}
@@ -2028,9 +2033,9 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 5
+    m_DirtyIndex: 0
   - serializedVersion: 1
-    m_DirtyIndex: 3
+    m_DirtyIndex: 0
 --- !u!1 &2138716853
 GameObject:
   m_ObjectHideFlags: 0
