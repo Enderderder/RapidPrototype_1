@@ -4,28 +4,41 @@ using UnityEngine;
 
 public class Door : MonoBehaviour {
 
-    [System.NonSerialized]
-    public bool isOpen;
+    // Components
+    private SpriteRenderer spriteRenderer;
+    private BoxCollider2D boxCollider;
 
+    // Sprite Collection
     public Sprite OpenSprite;
     public Sprite ClosedSprite;
 
+    // Bool that tells if the door is open or not
+    [SerializeField]
+    private bool isOpen;
+
 	private void Start ()
     {
-        isOpen = false;
-	}
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
-    private void Update()
-    {
-        if (isOpen)
-        {
-            GetComponent<SpriteRenderer>().sprite = OpenSprite;
-            GetComponent<BoxCollider2D>().enabled = false;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().sprite = ClosedSprite;
-            GetComponent<BoxCollider2D>().enabled = true;
-        }
+        // Make sure the door is in close state at the beginning
+        CloseDoor();
     }
+
+    //private void Update() {}
+
+    public void OpenDoor()
+    {
+        isOpen = true;
+        spriteRenderer.sprite = OpenSprite;
+        boxCollider.enabled = false;
+    }
+
+    public void CloseDoor()
+    {
+        isOpen = false;
+        spriteRenderer.sprite = ClosedSprite;
+        boxCollider.enabled = true;
+    }
+ 
 }
