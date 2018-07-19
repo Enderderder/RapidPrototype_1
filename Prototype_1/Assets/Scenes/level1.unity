@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -447,6 +446,11 @@ Prefab:
     - target: {fileID: 114218436274417334, guid: d37220b9a93e2d64696f17a52fc85f64,
         type: 2}
       propertyPath: door
+      value: 
+      objectReference: {fileID: 1992147854}
+    - target: {fileID: 114218436274417334, guid: d37220b9a93e2d64696f17a52fc85f64,
+        type: 2}
+      propertyPath: connectedDoor
       value: 
       objectReference: {fileID: 1992147854}
     m_RemovedComponents: []
@@ -1824,7 +1828,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &430063621
 Transform:
@@ -8676,6 +8680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSprite: {fileID: 21300000, guid: f5d33f5463341de4d9d3e847b0ec0bd7, type: 3}
   ClosedSprite: {fileID: 21300000, guid: cd2d00c12cab64746aebfa85e1b7118d, type: 3}
+  isOpen: 0
 --- !u!212 &1992147855
 SpriteRenderer:
   m_ObjectHideFlags: 0
