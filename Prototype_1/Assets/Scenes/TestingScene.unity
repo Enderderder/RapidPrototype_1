@@ -251,7 +251,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &382028591
 MonoBehaviour:
@@ -337,15 +337,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_LocalRotation.w
@@ -353,13 +353,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4825922005759976, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114152911850500260, guid: d208e8098b8e25d41b63dffcfee8b55d,
-        type: 2}
-      propertyPath: gridLayout
-      value: 
-      objectReference: {fileID: 11643939}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
   m_IsPrefabParent: 0
@@ -400,7 +395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4440023501886186, guid: d37220b9a93e2d64696f17a52fc85f64, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 212230612232658208, guid: d37220b9a93e2d64696f17a52fc85f64,
         type: 2}
@@ -428,6 +423,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 122bc3f1acef39d4ea02fb21ca83d3d3,
         type: 3}
+    - target: {fileID: 114218436274417334, guid: d37220b9a93e2d64696f17a52fc85f64,
+        type: 2}
+      propertyPath: isPlateDown
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d37220b9a93e2d64696f17a52fc85f64, type: 2}
   m_IsPrefabParent: 0

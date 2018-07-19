@@ -72,8 +72,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (pressteleport) {
                 if (this.transform.position.x < 0 && this.transform.position.y >= 0) {
-                    this.transform.position = new Vector3(-60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
-                    slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
+                    //this.transform.position = new Vector3(-60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
+                    //slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
                 }
                 else if (this.transform.position.x < 0 && this.transform.position.y < 0)
                 {
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                 }
 
 
-                hold = false;
+                //hold = false;
                 pressteleport = false;
             }
         }
@@ -101,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
     public void FixedUpdate()
     {
         rgb2d.velocity = resultMovement;
+        resultMovement = Vector3.zero;
     }
 
     void OnCollisionStay2D(Collision2D other)
@@ -113,4 +114,32 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+
+    private void DotheSlimeMove()
+    {
+        // Get the current position
+        Vector3 position = this.transform.position;
+
+        if (Input.GetKeyDown(KeyCode.W))
+        { 
+            position.y += 54;
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
+        {
+            position.y -= 54;
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
+        {
+            position.x -= 54;
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
+        {
+            position.x += 54;
+        }
+
+        this.transform.position = position;
+
+    }
+
 }
