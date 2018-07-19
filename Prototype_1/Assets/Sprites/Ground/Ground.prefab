@@ -255,11 +255,15 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: e55a15ac172e37d418f6a4a643f3e4d4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: a043b3fb511a5ed419b8cbe7c69125cc, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 11
     m_Data: {fileID: 21300000, guid: 0f58a95af88e68f4a9692e8ba731c28b, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 60d0363c7f9bdfd47b6f213129f1ea60, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 12
     m_Data:

@@ -4,43 +4,66 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-	// Boolean that tells if the pressure plate is down or not
-    [System.NonSerialized]
-	public bool isDown;
+    // Components
+    private SpriteRenderer spriteRenderer;
 
-    public Door door;
-
-	// Sprite array that shows the state of the pressure plate
+    // Sprite Collection
     public Sprite plateUpSprite;
     public Sprite plateDownSprite;
 
-	void Start ()
-	{
-		// Make sure the plate is up at the beginning
-		PressurePlateUp();
-	}
+    // Boolean that tells if the pressure plate is down or not
+    [SerializeField]
+    private bool isPlateDown;
 
-	private void OnTriggerStay2D(Collider2D _other)
-	{
-		PressurePlateDown();
-	}
+    // Counter for how many object is on the plate
+    private int countOnTop;
 
-	private void OnTriggerExit2D(Collider2D _other)
+    // The connected door object with this pressure plate
+    public Door connectedDoor;
+
+    private void Start()
     {
-		PressurePlateUp();
-	}
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-	private void PressurePlateDown()
-	{
-		GetComponent<SpriteRenderer>().sprite = plateDownSprite;
-        door.isOpen = true;
-        isDown = true;
+        // Make sure the plate is up at the beginning
+        PressurePlateUp();
     }
 
-	private void PressurePlateUp()
-	{
-		GetComponent<SpriteRenderer>().sprite = plateUpSprite;
-        door.isOpen = false;
-        isDown = false;
-	}
+    // private void Update() {}
+
+    private void OnTriggerEnter2D(Collider2D _other)
+    {
+        // Add a count whenever object goes on to it
+        countOnTop++; 
+
+        if (!isPlateDown)
+        {
+            PressurePlateDown();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D _other)
+    {
+        countOnTop--;
+
+        // If nothing is on top of the plate, go back up
+        if (countOnTop <= 0)
+        {
+            PressurePlateUp();
+        }
+    }
+
+    private void PressurePlateDown()
+    {
+        spriteRenderer.sprite = plateDownSprite;
+        connectedDoor.OpenDoor();
+        isPlateDown = true;
+    }
+
+    private void PressurePlateUp()
+    {
+        spriteRenderer.sprite = plateUpSprite;
+        connectedDoor.CloseDoor();
+        isPlateDown = false;
+    }
 }
