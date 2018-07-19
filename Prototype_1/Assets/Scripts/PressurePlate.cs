@@ -44,6 +44,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D _other)
     {
+        // Minus counter when one object goes off the plate
         countOnTop--;
 
         // If nothing is on top of the plate, go back up
