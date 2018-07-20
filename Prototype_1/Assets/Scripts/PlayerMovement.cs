@@ -40,61 +40,61 @@ public class PlayerMovement : MonoBehaviour
             resultMovement = new Vector2(horizontalCurrSpeed, verticalCurrSpeed);
             resultMovement = resultMovement.normalized * moveSpeed;
             Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
-            Debug.Log(cellPosition);
+            //Debug.Log(cellPosition);
         }
         else
         {
-
+            DotheSlimeMove();
             
-            Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
-            Debug.Log(cellPosition);
-            if (!pressteleport) {
-                if (Input.GetKeyDown(KeyCode.W))
-                {
-                    cellPosition.y += 2;
-                    pressteleport = true;
-                }
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    cellPosition.y -= 2;
-                    pressteleport = true;
-                }
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    cellPosition.x += 2;
-                    pressteleport = true;
-                }
-                if (Input.GetKeyDown(KeyCode.A))
-                {
-                    cellPosition.x -= 2;
-                    pressteleport = true;
-                }
-            }
-            if (pressteleport) {
-                if (this.transform.position.x < 0 && this.transform.position.y >= 0) {
-                    //this.transform.position = new Vector3(-60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
-                    //slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
-                }
-                else if (this.transform.position.x < 0 && this.transform.position.y < 0)
-                {
-                    this.transform.position = new Vector3(-60 + (60 * cellPosition.x), -80 + (80 * cellPosition.y), 0);
-                    slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), -54 + (54 * cellPosition.y), 0);
-                }
-                else if (this.transform.position.x >= 0 && this.transform.position.y < 0)
-                {
-                    this.transform.position = new Vector3(60 + (60 * cellPosition.x), -80 + (80 * cellPosition.y), 0);
-                    slime.transform.position = new Vector3(55 + (55 * cellPosition.x), -54 + (54 * cellPosition.y), 0);
-                }
-                else if (this.transform.position.x >= 0 && this.transform.position.y >= 0)
-                {
-                    this.transform.position = new Vector3(60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
-                    slime.transform.position = new Vector3(55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
-                }
+            //Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
+            //Debug.Log(cellPosition);
+            //if (!pressteleport) {
+            //    if (Input.GetKeyDown(KeyCode.W))
+            //    {
+            //        cellPosition.y += 2;
+            //        pressteleport = true;
+            //    }
+            //    if (Input.GetKeyDown(KeyCode.S))
+            //    {
+            //        cellPosition.y -= 2;
+            //        pressteleport = true;
+            //    }
+            //    if (Input.GetKeyDown(KeyCode.D))
+            //    {
+            //        cellPosition.x += 2;
+            //        pressteleport = true;
+            //    }
+            //    if (Input.GetKeyDown(KeyCode.A))
+            //    {
+            //        cellPosition.x -= 2;
+            //        pressteleport = true;
+            //    }
+            //}
+            //if (pressteleport) {
+            //    if (this.transform.position.x < 0 && this.transform.position.y >= 0) {
+            //        //this.transform.position = new Vector3(-60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
+            //        //slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
+            //    }
+            //    else if (this.transform.position.x < 0 && this.transform.position.y < 0)
+            //    {
+            //        this.transform.position = new Vector3(-60 + (60 * cellPosition.x), -80 + (80 * cellPosition.y), 0);
+            //        slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), -54 + (54 * cellPosition.y), 0);
+            //    }
+            //    else if (this.transform.position.x >= 0 && this.transform.position.y < 0)
+            //    {
+            //        this.transform.position = new Vector3(60 + (60 * cellPosition.x), -80 + (80 * cellPosition.y), 0);
+            //        slime.transform.position = new Vector3(55 + (55 * cellPosition.x), -54 + (54 * cellPosition.y), 0);
+            //    }
+            //    else if (this.transform.position.x >= 0 && this.transform.position.y >= 0)
+            //    {
+            //        this.transform.position = new Vector3(60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
+            //        slime.transform.position = new Vector3(55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
+            //    }
 
 
-                //hold = false;
-                pressteleport = false;
-            }
+            //    //hold = false;
+            //    pressteleport = false;
+            //}
         }
     }
 
@@ -108,7 +108,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Slime")
         {
-            if (Input.GetKeyDown(KeyCode.E)) {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 hold = true;
                 slime = other.gameObject;
             }
@@ -119,26 +120,32 @@ public class PlayerMovement : MonoBehaviour
     private void DotheSlimeMove()
     {
         // Get the current position
-        Vector3 position = this.transform.position;
+        Vector3 selfPos = this.transform.position;
+        Vector3 slimePos = slime.transform.position;
 
         if (Input.GetKeyDown(KeyCode.W))
         { 
-            position.y += 54;
+            selfPos.y += 108;
+            slimePos.y += 108;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            position.y -= 54;
+            selfPos.y -= 108;
+            slimePos.y -= 108;
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            position.x -= 54;
+            selfPos.x -= 108;
+            slimePos.x -= 108;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            position.x += 54;
+            selfPos.x += 108;
+            slimePos.x += 108;
         }
 
-        this.transform.position = position;
+        this.transform.position = selfPos;
+        slime.transform.position = slimePos;
 
     }
 
