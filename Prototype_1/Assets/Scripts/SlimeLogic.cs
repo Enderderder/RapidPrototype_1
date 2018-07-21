@@ -14,7 +14,7 @@ public class SlimeLogic : MonoBehaviour
     // Private Variables
 
     private GameObject pPlayer;
-    public GridLayout gridLayout;
+    private GridLayout gridLayout;
 
 
     void Start()
@@ -33,57 +33,83 @@ public class SlimeLogic : MonoBehaviour
             pPlayer = GameObject.FindGameObjectWithTag("Player");
             return;
         }
-
-        CheckTileData(gridLayout.WorldToCell(this.transform.position));
-
     }
 
 
-    public void CheckTile(char _dir)
+    public bool CheckWalkDir(char _dir)
     {
+        // Get the current position on the tilemap
         Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);
-
 
         switch (_dir)
         {
             case 'W':
-                {
+                thisGridPos.y++;
+                break;
 
-                    break;
-                }
             case 'S':
-                {
+                thisGridPos.y--;
+                break;
 
-                    break;
-                }
             case 'A':
-                {
+                thisGridPos.x--;
+                break;
 
-                    break;
-                }
             case 'D':
-                {
-
-                    break;
-                }
+                thisGridPos.x++;
+                break;
 
             default: break;
         }
+
+        if (CheckWalkableTile(thisGridPos))
+        {
+            return true;
+        }
+
+        return false;
     }
 
-    private bool CheckTileData(Vector3Int _pos)
+    private bool CheckWalkableTile(Vector3Int _pos)
     {
-
-        Tilemap tilemap = GameObject.Find("Tilemap_UnWalkable").GetComponent<Tilemap>();
-
-        //TileBase tileBase = tilemap.GetTile(_pos);
+        // Get the tilemap of all the non-walkable tiles
+        Tilemap tilemap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
 
         if (tilemap.HasTile(_pos))
         {
-            Debug.Log("Its a wall");
+            return false;
         }
 
         return true;
+    }
+
+    public void MoveSlime(char _dir)
+    {
+        // Get the current position
+        Vector3 thisPos = this.transform.position;
+
+        switch (_dir)
+        {
+            case 'W':
+                thisPos.y += 108;
+                break;
+
+            case 'S':
+                thisPos.y -= 108;
+                break;
+
+            case 'A':
+                thisPos.x -= 108;
+                break;
+
+            case 'D':
+                thisPos.x += 108;
+                break;
+
+            default: break;
+        }
+
+        this.transform.position = thisPos;
     }
 
 }

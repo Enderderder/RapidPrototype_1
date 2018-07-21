@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public void Start()
     {
         rgb2d = GetComponent<Rigidbody2D>();
+        gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
     }
 
     public void Update()
@@ -119,34 +121,109 @@ public class PlayerMovement : MonoBehaviour
 
     private void DotheSlimeMove()
     {
-        // Get the current position
-        Vector3 selfPos = this.transform.position;
-        Vector3 slimePos = slime.transform.position;
+        // Direction variable
+        char dir = ' ';
 
+        // Get Input from player
         if (Input.GetKeyDown(KeyCode.W))
-        { 
-            selfPos.y += 108;
-            slimePos.y += 108;
+        {
+            dir = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            selfPos.y -= 108;
-            slimePos.y -= 108;
+            dir = 'S';
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
-            selfPos.x -= 108;
-            slimePos.x -= 108;
+            dir = 'A';
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
-            selfPos.x += 108;
-            slimePos.x += 108;
+            dir = 'D';
+        }
+
+        if (dir != ' '
+            && slime.GetComponent<SlimeLogic>().CheckWalkDir(dir)
+            && this.CheckWalkDir(dir))
+        {
+            slime.GetComponent<SlimeLogic>().MoveSlime(dir);
+            MovePlayerByGrid(dir);
+        }
+    }
+
+    private bool CheckWalkDir(char _dir)
+    {
+        // Get the current position on the tilemap
+        Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);
+
+        switch (_dir)
+        {
+            case 'W':
+                thisGridPos.y++;
+                break;
+
+            case 'S':
+                thisGridPos.y--;
+                break;
+
+            case 'A':
+                thisGridPos.x--;
+                break;
+
+            case 'D':
+                thisGridPos.x++;
+                break;
+
+            default: break;
+        }
+
+        if (CheckWalkableTile(thisGridPos))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool CheckWalkableTile(Vector3Int _pos)
+    {
+        // Get the tilemap of all the non-walkable tiles
+        Tilemap tilemap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
+
+        if (tilemap.HasTile(_pos))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void MovePlayerByGrid(char _dir)
+    {
+        // Get the current position
+        Vector3 selfPos = this.transform.position;
+
+        switch (_dir)
+        {
+            case 'W':
+                selfPos.y += 108;
+                break;
+
+            case 'S':
+                selfPos.y -= 108;
+                break;
+
+            case 'A':
+                selfPos.x -= 108;
+                break;
+
+            case 'D':
+                selfPos.x += 108;
+                break;
+
+            default: break;
         }
 
         this.transform.position = selfPos;
-        slime.transform.position = slimePos;
-
     }
-
 }
