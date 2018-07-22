@@ -5,10 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class SlimeLogic : MonoBehaviour
 {
-    // Global Variables
+    // Stats
 
     public bool isMoving;
+    public int totalHealth;
 
+    [SerializeField]
+    private int slimeHealth;
 
 
     // Private Variables
@@ -17,13 +20,17 @@ public class SlimeLogic : MonoBehaviour
     private GridLayout gridLayout;
 
 
+    //====================================================================
+
     void Start()
     {
         pPlayer = GameObject.FindGameObjectWithTag("Player");
-
         gridLayout = GameObject.Find("Grid").GetComponent<Grid>();
-    }
 
+
+        // Set health at the beginning
+        slimeHealth = totalHealth;
+    }
 
     void Update()
     {
@@ -35,6 +42,8 @@ public class SlimeLogic : MonoBehaviour
         }
     }
 
+
+    //====================================================================
 
     public bool CheckWalkDir(char _dir)
     {
@@ -110,6 +119,11 @@ public class SlimeLogic : MonoBehaviour
         }
 
         this.transform.position = thisPos;
+    }
+
+    public void HealthDown()
+    {
+        slimeHealth--;
     }
 
 }

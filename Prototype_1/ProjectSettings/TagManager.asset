@@ -8,6 +8,7 @@ TagManager:
   - Slime
   - Standable
   - Tilemap
+  - Grate
   layers:
   - Default
   - TransparentFX
@@ -50,6 +51,9 @@ TagManager:
     locked: 0
   - name: Object_Below
     uniqueID: 806432499
+    locked: 0
+  - name: Ground
+    uniqueID: 3284150075
     locked: 0
   - name: Object
     uniqueID: 2478101705
