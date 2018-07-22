@@ -17,9 +17,10 @@ public class GrateLogic : MonoBehaviour
 
     private bool isGrateEmpty;
 
+
     //====================================================
 
-    void Start ()
+    private void Start ()
     {
         // Get Object Component
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,14 +28,12 @@ public class GrateLogic : MonoBehaviour
         // Empty the Grate
         this.spriteRenderer.sprite = grateEmpty;
         isGrateEmpty = true;
-    }
 
+    }
 
     private void OnTriggerEnter2D(Collider2D _other)
     {
-
-
-        if(_other.tag == "Slime")
+        if (_other.tag == "Slime")
         {
             FillGrate();
             _other.GetComponent<SlimeLogic>().HealthDown();

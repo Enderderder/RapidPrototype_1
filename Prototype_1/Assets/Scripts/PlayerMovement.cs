@@ -143,15 +143,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (dir != ' '
-            && slime.GetComponent<SlimeLogic>().CheckWalkDir(dir)
-            && this.CheckWalkDir(dir))
+            && slime.GetComponent<SlimeLogic>().CheckMoveDir(dir)
+            && this.CheckMoveDir(dir))
         {
             slime.GetComponent<SlimeLogic>().MoveSlime(dir);
             MovePlayerByGrid(dir);
         }
     }
 
-    private bool CheckWalkDir(char _dir)
+    private bool CheckMoveDir(char _dir)
     {
         // Get the current position on the tilemap
         Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);

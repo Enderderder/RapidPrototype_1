@@ -45,7 +45,7 @@ public class SlimeLogic : MonoBehaviour
 
     //====================================================================
 
-    public bool CheckWalkDir(char _dir)
+    public bool CheckMoveDir(char _dir)
     {
         // Get the current position on the tilemap
         Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);
