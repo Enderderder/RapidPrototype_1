@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     [SerializeField]
     private bool hold = false;
-    private bool pressteleport = false;
+    //private bool pressteleport = false;
     private float horizontalCurrSpeed;
     private float verticalCurrSpeed;
     [SerializeField]
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
             resultMovement = new Vector2(horizontalCurrSpeed, verticalCurrSpeed);
             resultMovement = resultMovement.normalized * moveSpeed;
-            Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
+            //Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
             //Debug.Log(cellPosition);
         }
         else
@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        rgb2d.velocity = resultMovement;
+        rgb2d.velocity = resultMovement * ( Time.deltaTime * 100 );
         resultMovement = Vector3.zero;
     }
 

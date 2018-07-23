@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Door : MonoBehaviour {
 
@@ -12,35 +11,42 @@ public class Door : MonoBehaviour {
     public Sprite OpenSprite;
     public Sprite ClosedSprite;
 
-    // Bool that tells if the door is open or not
-    [SerializeField]
-    private bool isOpen;
+    // Tile Collection
+    public Tile unWalkableTile;
+    private Tilemap unWalkableTileMap;
+    private Vector3Int gridPos;
 
-	private void Start ()
+    // =======================================================================================
+
+    private void Awake()
     {
+        // Get Component
         spriteRenderer = GetComponent<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
+
+    }
+
+    private void Start ()
+    {
+        // Get the position in the tilemap
+        gridPos = GameObject.Find("Grid").GetComponent<GridLayout>().WorldToCell(this.transform.position);
 
         // Make sure the door is in close state at the beginning
         spriteRenderer.sprite = ClosedSprite;
-        boxCollider.enabled = true;
-        isOpen = false;
+        unWalkableTileMap.SetTile(gridPos, unWalkableTile);
     }
 
-    //private void Update() {}
+    // ==============================================================================================
 
     public void OpenDoor()
     {
-        isOpen = true;
+        unWalkableTileMap.SetTile(gridPos, null);
         spriteRenderer.sprite = OpenSprite;
-        boxCollider.enabled = false;
     }
 
     public void CloseDoor()
     {
-        isOpen = false;
+        unWalkableTileMap.SetTile(gridPos, unWalkableTile);
         spriteRenderer.sprite = ClosedSprite;
-        boxCollider.enabled = true;
     }
- 
 }

@@ -6,35 +6,60 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     // Singleton Stuff
-
-    private static bool created = false;
+    public static GameController instance;
 
     // Game Condition
 
+    public int finalGameLevel;
     public int currGameLevel;
 
     // Object Tracker
 
-    public GameObject pPlayer;
-    public GameObject pSlime;
+    //public GameObject pPlayer;
+    //public GameObject pSlime;
 
     void Awake()
     {
-        if (!created)
+        if (instance == null)
         {
+            instance = this;
             DontDestroyOnLoad(this.gameObject);
-            created = true;
+        }else if (instance != this)
+        {
+            Destroy(this.gameObject);
         }
     }
 
 	void Start ()
     {
-		
-	}
+        currGameLevel = 1;
+
+    }
 	
-	// Update is called once per frame
 	void Update ()
     {
 		
 	}
+
+    public void LevelFailed()
+    {
+        currGameLevel = 1;
+        SceneManager.LoadScene("GameOverScene");
+    }
+
+    public void LevelPassed()
+    {
+        if (currGameLevel != finalGameLevel)
+        {
+            // Get to the next level
+            currGameLevel++;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+        else
+        {
+            // Go to final scene
+            currGameLevel = 1;
+            SceneManager.LoadScene("PrototypeEndScene");
+        }
+    }
 }
