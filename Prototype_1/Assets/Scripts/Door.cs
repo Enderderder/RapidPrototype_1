@@ -37,8 +37,8 @@ public class Door : MonoBehaviour {
     }
 
     // ==============================================================================================
-
-    public void OpenDoor()
+    
+  public void OpenDoor()
     {
         unWalkableTileMap.SetTile(gridPos, null);
         spriteRenderer.sprite = OpenSprite;
