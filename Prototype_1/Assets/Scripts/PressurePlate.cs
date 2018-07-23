@@ -26,10 +26,9 @@ public class PressurePlate : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Make sure the plate is up at the beginning
-        PressurePlateUp();
+        spriteRenderer.sprite = plateUpSprite;
+        isPlateDown = false;
     }
-
-    // private void Update() {}
 
     private void OnTriggerEnter2D(Collider2D _other)
     {
@@ -57,14 +56,20 @@ public class PressurePlate : MonoBehaviour
     private void PressurePlateDown()
     {
         spriteRenderer.sprite = plateDownSprite;
-        connectedDoor.OpenDoor();
-        isPlateDown = true;
+        if (connectedDoor != null)
+        {
+            connectedDoor.OpenDoor();
+            isPlateDown = true;
+        }
     }
 
     private void PressurePlateUp()
     {
         spriteRenderer.sprite = plateUpSprite;
+
+
         connectedDoor.CloseDoor();
         isPlateDown = false;
+ 
     }
 }

@@ -126,4 +126,8 @@ public class SlimeLogic : MonoBehaviour
         slimeHealth--;
     }
 
+    public void HealthUp()
+    {
+        slimeHealth++;
+    }
 }

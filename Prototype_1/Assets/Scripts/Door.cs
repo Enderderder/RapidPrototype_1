@@ -22,7 +22,9 @@ public class Door : MonoBehaviour {
         boxCollider = GetComponent<BoxCollider2D>();
 
         // Make sure the door is in close state at the beginning
-        CloseDoor();
+        spriteRenderer.sprite = ClosedSprite;
+        boxCollider.enabled = true;
+        isOpen = false;
     }
 
     //private void Update() {}

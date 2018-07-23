@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 212132099486300902}
   - component: {fileID: 210133118420150640}
   - component: {fileID: 114152911850500260}
+  - component: {fileID: 114758021437677300}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -55,7 +56,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.0001
+  m_Mass: 355
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -103,6 +104,18 @@ MonoBehaviour:
   moveSpeed: 300
   hold: 0
   gridLayout: {fileID: 0}
+--- !u!114 &114758021437677300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001803186282518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e173ba708ff7840a9e4df5ad69609b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUpCount: 0
 --- !u!210 &210133118420150640
 SortingGroup:
   m_ObjectHideFlags: 1
