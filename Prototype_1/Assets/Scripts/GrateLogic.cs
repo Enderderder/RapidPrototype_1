@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GrateLogic : MonoBehaviour
 {
@@ -13,22 +11,19 @@ public class GrateLogic : MonoBehaviour
     public Sprite grateEmpty;
     public Sprite grateFull;
 
-    // Stats
-
-    private bool isGrateEmpty;
-
 
     //====================================================
 
-    private void Start ()
+    private void Awake()
     {
         // Get Object Component
         spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
+    private void Start ()
+    {
         // Empty the Grate
         this.spriteRenderer.sprite = grateEmpty;
-        isGrateEmpty = true;
-
     }
 
     private void OnTriggerEnter2D(Collider2D _other)
@@ -45,6 +40,6 @@ public class GrateLogic : MonoBehaviour
     public void FillGrate()
     {
         this.spriteRenderer.sprite = grateFull;
-        this.isGrateEmpty = false;
+        this.GetComponent<BoxCollider2D>().enabled = false;
     }
 }
