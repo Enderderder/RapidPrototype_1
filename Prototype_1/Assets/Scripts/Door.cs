@@ -25,8 +25,6 @@ public class Door : MonoBehaviour {
         CloseDoor();
     }
 
-    //private void Update() {}
-
     public void OpenDoor()
     {
         isOpen = true;
@@ -40,5 +38,4 @@ public class Door : MonoBehaviour {
         spriteRenderer.sprite = ClosedSprite;
         boxCollider.enabled = true;
     }
- 
 }

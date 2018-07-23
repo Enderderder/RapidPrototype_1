@@ -88,6 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -2780,21 +2781,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 210133118420150640, guid: d208e8098b8e25d41b63dffcfee8b55d,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 114152911850500260, guid: d208e8098b8e25d41b63dffcfee8b55d,
         type: 2}
       propertyPath: gridLayout
       value: 
       objectReference: {fileID: 11643939}
-    - target: {fileID: 50909973803773914, guid: d208e8098b8e25d41b63dffcfee8b55d,
-        type: 2}
-      propertyPath: m_Mass
-      value: 355
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d208e8098b8e25d41b63dffcfee8b55d, type: 2}
   m_IsPrefabParent: 0
