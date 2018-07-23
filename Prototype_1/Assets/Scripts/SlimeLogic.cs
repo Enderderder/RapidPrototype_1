@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class SlimeLogic : MonoBehaviour
@@ -13,20 +11,24 @@ public class SlimeLogic : MonoBehaviour
     [SerializeField]
     private int slimeHealth;
 
+    private Tilemap unWalkableTileMap;
 
     // Private Variables
 
-    private GameObject pPlayer;
     private GridLayout gridLayout;
 
 
     //====================================================================
 
+    private void Awake()
+    {
+        // Get the tilemap of all the non-walkable tiles
+        unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
+    }
     void Start()
     {
-        pPlayer = GameObject.FindGameObjectWithTag("Player");
+        // Finding the grid that slime is on
         gridLayout = GameObject.Find("Grid").GetComponent<Grid>();
-
 
         // Set health at the beginning
         slimeHealth = totalHealth;
@@ -34,12 +36,7 @@ public class SlimeLogic : MonoBehaviour
 
     void Update()
     {
-        // Check if the player pointer is valid
-        if (pPlayer == null)
-        {
-            pPlayer = GameObject.FindGameObjectWithTag("Player");
-            return;
-        }
+
     }
 
 
@@ -81,10 +78,7 @@ public class SlimeLogic : MonoBehaviour
 
     private bool CheckWalkableTile(Vector3Int _pos)
     {
-        // Get the tilemap of all the non-walkable tiles
-        Tilemap tilemap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
-
-        if (tilemap.HasTile(_pos))
+        if (unWalkableTileMap.HasTile(_pos))
         {
             return false;
         }
@@ -124,6 +118,22 @@ public class SlimeLogic : MonoBehaviour
     public void HealthDown()
     {
         slimeHealth--;
+
+        // Check if the slime is still alive
+        if (!isSlimeAlive())
+        {
+            GameController.instance.LevelFailed();
+            return;
+        }
     }
 
+    public void HealthUp()
+    {
+        slimeHealth++;
+    }
+
+    private bool isSlimeAlive()
+    {
+        return slimeHealth > 0;
+    }
 }
