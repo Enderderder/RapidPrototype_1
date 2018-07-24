@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 212392458434846648}
   - component: {fileID: 61422455090388920}
   - component: {fileID: 114073606366547602}
+  - component: {fileID: 114630183254620466}
+  - component: {fileID: 210895996216096438}
   m_Layer: 8
   m_Name: Slime
   m_TagString: Slime
@@ -105,6 +107,35 @@ MonoBehaviour:
   slimeSprite2: {fileID: 21300000, guid: f0befc82fd7f00e43873320ceed7323f, type: 3}
   slimeSprite3: {fileID: 21300000, guid: 74ab8e675275380468107c08d8a3f9a9, type: 3}
   slimeHealth: 1
+--- !u!114 &114630183254620466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1112161363650482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83c8283d809ba848800f72c2c57a9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  percentTrue: 0
+  percentThisMove: 0
+  moveTaskStart: {x: 0, y: 0, z: 0}
+  moveTaskEnd: {x: 0, y: 0, z: 0}
+  currTile: {x: 0, y: 0, z: 0}
+  prevTile: {x: 0, y: 0, z: 0}
+  unWalkableTile: {fileID: 11400000, guid: e55a15ac172e37d418f6a4a643f3e4d4, type: 2}
+--- !u!210 &210895996216096438
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1112161363650482}
+  m_Enabled: 1
+  m_SortingLayerID: -1816865591
+  m_SortingLayer: 4
+  m_SortingOrder: 0
 --- !u!212 &212392458434846648
 SpriteRenderer:
   m_ObjectHideFlags: 1
