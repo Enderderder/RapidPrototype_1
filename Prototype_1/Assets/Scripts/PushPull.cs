@@ -5,11 +5,24 @@ using UnityEngine.Tilemaps;
 
 public class PushPull : MonoBehaviour
 {
-    // Private Variables
+    // Constant Variable
+
+    private const float MOVETIME = 1.0f;
+
+    // Stat
+
+    public bool isMoving;
+    public float percentageTrue;
+
+    public Vector3 moveTaskStart;
+    public Vector3 moveTaskEnd;
+
+    public float percentage;
+
+    // Object Reference
 
     private Tilemap unWalkableTileMap;
     private GridLayout gridLayout;
-
 
     // Use this for initialization
     void Start ()
@@ -19,44 +32,67 @@ public class PushPull : MonoBehaviour
 
         // Get the tilemap of all the non-walkable tiles
         unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
-        
+
+        percentageTrue = 0.0f;
+        isMoving = false;
     }
 	
 	// Update is called once per frame
-	void Update ()
+	private void FixedUpdate ()
     {
-		
-	}
+        if (isMoving)
+        {
+            Debug.Log("dsf");
+
+            Vector3 distance = moveTaskEnd - moveTaskStart;
+            percentage = Time.deltaTime / MOVETIME;
+            percentageTrue += percentage;
+
+            if (percentageTrue > 1.0f)
+            {
+                this.transform.position = moveTaskEnd;
+                percentageTrue = 0.0f;
+                isMoving = false;
+                return;
+            }
+
+            Vector3 currPos = this.transform.position;
+            currPos += distance * percentage;
+            this.transform.position = currPos;
+
+        }
+
+    }
 
     // ===============================================================================
 
-    public bool CheckMoveDir(char _dir)
+    public bool CheckMoveDir(char _dir, Vector3 currPos)
     {
         // Get the current position on the tilemap
-        Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);
+        Vector3Int targetGrid = gridLayout.WorldToCell(currPos);
 
         switch (_dir)
         {
             case 'W':
-                thisGridPos.y++;
+                targetGrid.y++;
                 break;
 
             case 'S':
-                thisGridPos.y--;
+                targetGrid.y--;
                 break;
 
             case 'A':
-                thisGridPos.x--;
+                targetGrid.x--;
                 break;
 
             case 'D':
-                thisGridPos.x++;
+                targetGrid.x++;
                 break;
 
             default: break;
         }
 
-        if (CheckWalkableTile(thisGridPos))
+        if (CheckWalkableTile(targetGrid))
         {
             return true;
         }
@@ -77,29 +113,32 @@ public class PushPull : MonoBehaviour
     public void MoveByGrid(char _dir)
     {
         // Get the current position
-        Vector3 thisPos = this.transform.position;
+        moveTaskStart = this.transform.position;
 
+        // Get the target position
+        moveTaskEnd = moveTaskStart;
         switch (_dir)
         {
             case 'W':
-                thisPos.y += 108;
+                moveTaskEnd.y += 108;
                 break;
 
             case 'S':
-                thisPos.y -= 108;
+                moveTaskEnd.y -= 108;
                 break;
 
             case 'A':
-                thisPos.x -= 108;
+                moveTaskEnd.x -= 108;
                 break;
 
             case 'D':
-                thisPos.x += 108;
+                moveTaskEnd.x += 108;
                 break;
 
             default: break;
         }
 
-        this.transform.position = thisPos;
+        // Start the move task
+        isMoving = true;
     }
 }
