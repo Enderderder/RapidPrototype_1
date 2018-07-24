@@ -5,7 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     public float moveSpeed;
     [SerializeField]
     private bool hold = false;
@@ -17,11 +16,13 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 resultMovement;
     private Rigidbody2D rgb2d;
     private GameObject slime;
+    private Animator anim;
 
     public void Start()
     {
         rgb2d = GetComponent<Rigidbody2D>();
         gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
+        anim = GetComponent<Animator>();
     }
 
     public void Update()
@@ -33,10 +34,16 @@ public class PlayerMovement : MonoBehaviour
             if (horizontalCurrSpeed < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
+                anim.SetBool("isWalking", true);
             }
             else if (horizontalCurrSpeed > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
+                anim.SetBool("isWalking", true);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
             }
 
             resultMovement = new Vector2(horizontalCurrSpeed, verticalCurrSpeed);
