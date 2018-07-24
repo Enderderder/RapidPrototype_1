@@ -56,10 +56,16 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 GetComponent<SpriteRenderer>().flipX = true;
+                animator.SetBool("isWalking", true);
             }
             else if (horizontalIput > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
             }
 
             resultMovement = new Vector2(horizontalIput, verticalInput);
