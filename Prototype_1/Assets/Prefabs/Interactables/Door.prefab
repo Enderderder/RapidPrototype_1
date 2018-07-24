@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenSprite: {fileID: 21300000, guid: f5d33f5463341de4d9d3e847b0ec0bd7, type: 3}
   ClosedSprite: {fileID: 21300000, guid: cd2d00c12cab64746aebfa85e1b7118d, type: 3}
-  unWalkableTile: {fileID: 0}
+  unWalkableTile: {fileID: 11400000, guid: e55a15ac172e37d418f6a4a643f3e4d4, type: 2}
 --- !u!210 &210139980157659756
 SortingGroup:
   m_ObjectHideFlags: 1

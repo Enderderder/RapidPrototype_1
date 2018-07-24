@@ -9,7 +9,16 @@ public class SlimeLogic : MonoBehaviour
     public int totalHealth;
 
     [SerializeField]
+    private Sprite slimeSprite1;
+    [SerializeField]
+    private Sprite slimeSprite2;
+    [SerializeField]
+    private Sprite slimeSprite3;
+
+    [SerializeField]
     private int slimeHealth;
+
+    private SpriteRenderer spriteRenderer;
 
     private Tilemap unWalkableTileMap;
 
@@ -30,11 +39,28 @@ public class SlimeLogic : MonoBehaviour
 
         // Set health at the beginning
         slimeHealth = totalHealth;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
-
+        switch (slimeHealth)
+        {
+            case 1:
+                spriteRenderer.sprite = slimeSprite1;
+                break;
+            case 2:
+                Debug.Log("dsgfasgdfsgknjdfsjifg");
+                spriteRenderer.sprite = slimeSprite2;
+                break;
+            case 3:
+                spriteRenderer.sprite = slimeSprite3;
+                break;
+            default:
+                spriteRenderer.sprite = slimeSprite1;
+                break;
+        }
     }
 
 
