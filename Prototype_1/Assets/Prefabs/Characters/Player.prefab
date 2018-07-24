@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4825922005759976}
-  - component: {fileID: 95504464379745404}
   - component: {fileID: 50909973803773914}
   - component: {fileID: 212132099486300902}
   - component: {fileID: 58847281070152002}
@@ -110,9 +109,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe4aa4229b82484890dd75baba86e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 300
-  hold: 0
-  gridLayout: {fileID: 0}
+  maxMovSpeed: 700
+  maxGrabSpeed: 500
+  isHolding: 0
 --- !u!114 &114758021437677300
 MonoBehaviour:
   m_ObjectHideFlags: 1
