@@ -7,57 +7,88 @@ public class PushPull : MonoBehaviour
 {
     // Constant Variable
 
-    private const float MOVETIME = 1.0f;
+    private const float MOVETIME = 0.5f;
 
     // Stat
 
     public bool isMoving;
-    public float percentageTrue;
+    public float percentTrue;
+    public float percentThisMove;
 
     public Vector3 moveTaskStart;
     public Vector3 moveTaskEnd;
 
-    public float percentage;
+
+    public Vector3Int currTile;
+    public Vector3Int prevTile;
 
     // Object Reference
 
     private Tilemap unWalkableTileMap;
     private GridLayout gridLayout;
+    private PlayerMovement playerMove;
+    public Tile unWalkableTile;
 
-    // Use this for initialization
+    // ==========================================================================================
+
     void Start ()
     {
         // Get grid
-        gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
+        gridLayout = GameObject.Find(
+            "Grid").GetComponent<GridLayout>();
 
         // Get the tilemap of all the non-walkable tiles
-        unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
+        unWalkableTileMap = GameObject.Find(
+            "Tilemap_NonWalkable").GetComponent<Tilemap>();
 
-        percentageTrue = 0.0f;
+        // Get player
+        playerMove = GameObject.FindGameObjectWithTag(
+            "Player").GetComponent<PlayerMovement>();
+
+        // Set starting value
+        percentTrue = 0.0f;
         isMoving = false;
+
+        currTile = gridLayout.WorldToCell(this.transform.position);
+        prevTile = currTile;
+        unWalkableTileMap.SetTile(currTile, unWalkableTile);
+    }
+
+    void Update()
+    {
+        if(this.gameObject.tag != "Player")
+        {
+            currTile = gridLayout.WorldToCell(this.transform.position);
+
+            if (currTile != prevTile)
+            {
+                unWalkableTileMap.SetTile(prevTile, null);
+                unWalkableTileMap.SetTile(currTile, unWalkableTile);
+                prevTile = currTile;
+            }
+        }
     }
 	
-	// Update is called once per frame
 	private void FixedUpdate ()
     {
         if (isMoving)
         {
-            Debug.Log("dsf");
 
             Vector3 distance = moveTaskEnd - moveTaskStart;
-            percentage = Time.deltaTime / MOVETIME;
-            percentageTrue += percentage;
+            percentThisMove = Time.deltaTime / MOVETIME;
+            percentTrue += percentThisMove;
 
-            if (percentageTrue > 1.0f)
+            if (percentTrue > 1.0f)
             {
                 this.transform.position = moveTaskEnd;
-                percentageTrue = 0.0f;
+                percentTrue = 0.0f;
                 isMoving = false;
+                playerMove.FinishPush();
                 return;
             }
 
             Vector3 currPos = this.transform.position;
-            currPos += distance * percentage;
+            currPos += distance * percentThisMove;
             this.transform.position = currPos;
 
         }
@@ -102,7 +133,12 @@ public class PushPull : MonoBehaviour
 
     private bool CheckWalkableTile(Vector3Int _pos)
     {
-        if (unWalkableTileMap.HasTile(_pos))
+        if (_pos == gridLayout.WorldToCell(
+            playerMove.GetGrabbingObj().transform.position))
+        {
+            return true;
+        }
+        else if (unWalkableTileMap.HasTile(_pos))
         {
             return false;
         }

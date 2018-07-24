@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 resultMovement;
     [SerializeField]
     private bool isHolding;
+    [SerializeField]
     private bool isPushing;
 
     // Game Object Reference
@@ -78,21 +79,19 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Slime")
+        if (other.gameObject.tag == "Slime" || other.gameObject.tag == "Crate")
         {
             if (Input.GetButtonDown("Grab") && !isHolding)
             {
                 isHolding = true;
                 grabbingObj = other.gameObject;
                 animator.SetBool("isPushing", true);
-                //slime.transform.parent = this.transform;
             }
             else if (Input.GetButtonDown("Grab") && isHolding)
             {
                 isHolding = false;
                 grabbingObj = null;
                 animator.SetBool("isPushing", false);
-                //slime.transform.parent = null;
             }
         }
     }
@@ -134,5 +133,16 @@ public class PlayerMovement : MonoBehaviour
             isPushing = true;
         }
     }
+
+    public void FinishPush()
+    {
+        isPushing = false;
+    }
+
+    public GameObject GetGrabbingObj()
+    {
+        return grabbingObj;
+    }
+
 
 }
