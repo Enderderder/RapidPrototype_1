@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private GridLayout gridLayout;
     private GameObject slime;
+    private Animator anim;
 
     private void Awake()
     {
@@ -51,10 +52,16 @@ public class PlayerMovement : MonoBehaviour
             {
 
                 GetComponent<SpriteRenderer>().flipX = true;
+                anim.SetBool("isWalking", true);
             }
             else if (horizontalIput > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
+                anim.SetBool("isWalking", true);
+            }
+            else
+            {
+                anim.SetBool("isWalking", false);
             }
 
             resultMovement = new Vector2(horizontalIput, verticalInput);
