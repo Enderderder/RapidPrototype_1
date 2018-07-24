@@ -88,7 +88,6 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -2108,7 +2107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &430063620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6563,38 +6562,38 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1939806131}
-  - {fileID: 383218705}
-  - {fileID: 2034208247}
-  - {fileID: 1351102406}
   - {fileID: 808793718}
   - {fileID: 1215360859}
-  - {fileID: 2099938949}
-  - {fileID: 927654645}
-  - {fileID: 1146592605}
-  - {fileID: 354683235}
+  - {fileID: 383218705}
   - {fileID: 682381506}
+  - {fileID: 927654645}
   - {fileID: 1776501180}
   - {fileID: 1325646895}
+  - {fileID: 609443876}
   - {fileID: 1161761120}
-  - {fileID: 77112005}
-  - {fileID: 1070805696}
   - {fileID: 1378554798}
+  - {fileID: 77112005}
+  - {fileID: 2034208247}
+  - {fileID: 1070805696}
+  - {fileID: 1193562179}
+  - {fileID: 1351102406}
   - {fileID: 8928734}
   - {fileID: 1707857767}
+  - {fileID: 2099938949}
   - {fileID: 1512498810}
   - {fileID: 923582383}
-  - {fileID: 1193562179}
-  - {fileID: 609443876}
+  - {fileID: 1366277785}
+  - {fileID: 1146592605}
+  - {fileID: 1414985804}
+  - {fileID: 354683235}
   - {fileID: 2055399599}
   - {fileID: 2019628840}
-  - {fileID: 1414985804}
-  - {fileID: 864923718}
   - {fileID: 1810702725}
-  - {fileID: 1366277785}
+  - {fileID: 864923718}
   - {fileID: 57444894}
   - {fileID: 1067246745}
-  - {fileID: 483712397}
   - {fileID: 1052614046}
+  - {fileID: 483712397}
   - {fileID: 161922388}
   m_Father: {fileID: 0}
   m_RootOrder: 5
