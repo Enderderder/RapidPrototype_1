@@ -262,12 +262,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1481155818}
-        m_MethodName: 
+      - m_Target: {fileID: 1481155819}
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -560,11 +560,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c9eb2a95772a7a4cab29b39bc49f9dd, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1481155818 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1859637870312166, guid: 6c9eb2a95772a7a4cab29b39bc49f9dd,
+--- !u!114 &1481155819 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114165737496488552, guid: 6c9eb2a95772a7a4cab29b39bc49f9dd,
     type: 2}
   m_PrefabInternal: {fileID: 1481155817}
+  m_Script: {fileID: 11500000, guid: 65290becadb0ea04e8db4f61e0a0b88b, type: 3}
 --- !u!1001 &1633047798
 Prefab:
   m_ObjectHideFlags: 0
@@ -683,12 +684,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1481155819}
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

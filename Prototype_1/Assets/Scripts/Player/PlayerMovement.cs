@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 resultMovement;
     [SerializeField]
     private bool isHolding;
+    private bool isPushing;
 
     // Game Object Reference
 
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
 
         isHolding = false;
+        isPushing = false;
     }
 
     public void Update()
@@ -62,8 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            DotheSlimeMove();
-
+            DoGrabMove();
         }
     }
 
@@ -73,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         resultMovement = Vector3.zero;
     }
 
-    void OnCollisionStay2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.tag == "Slime")
         {
@@ -82,52 +83,61 @@ public class PlayerMovement : MonoBehaviour
                 isHolding = true;
                 slime = other.gameObject;
                 animator.SetBool("isPushing", true);
+                //slime.transform.parent = this.transform;
             }
             else if (Input.GetButtonDown("Grab") && isHolding)
             {
                 isHolding = false;
                 animator.SetBool("isPushing", false);
+                //slime.transform.parent = null;
             }
         }
     }
 
-    private void DotheSlimeMove()
+    private void DoGrabMove()
     {
-        // Direction variable
-        char dir = ' ';
+        if (!isPushing)
+        {
+            // Direction variable
+            char dir = ' ';
 
-        // Get Input from player
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            dir = 'W';
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            dir = 'S';
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            dir = 'A';
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            dir = 'D';
-        }
+            // Get Input from player
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                dir = 'W';
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                dir = 'S';
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                dir = 'A';
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                dir = 'D';
+            }
 
-        if (dir != ' '
-            && slime.GetComponent<SlimeLogic>().CheckMoveDir(dir)
-            && this.CheckMoveDir(dir))
-        {
-            slime.GetComponent<SlimeLogic>().MoveSlime(dir);
-            MovePlayerByGrid(dir);
+            if (dir != ' '
+                && slime.GetComponent<SlimeLogic>().CheckMoveDir(dir)
+                && this.CheckPlayerMoveDir(dir))
+            {
+                slime.GetComponent<SlimeLogic>().MoveSlime(dir);
+                MovePlayerByGrid(dir);
+                isPushing = true;
+            }
         }
     }
 
-    private bool CheckMoveDir(char _dir)
+    private bool CheckPlayerMoveDir(char _dir)
     {
-        // Get the current position on the tilemap
-        Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);
+        Vector3 centrePos = this.transform.position;
+        centrePos.y -= 35;
 
+        // Get the current position on the tilemap
+        Vector3Int thisGridPos = gridLayout.WorldToCell(centrePos);
+        
         switch (_dir)
         {
             case 'W':
