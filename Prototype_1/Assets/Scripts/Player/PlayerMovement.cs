@@ -5,98 +5,65 @@ using UnityEngine.Tilemaps;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Component
 
-    public float moveSpeed;
-    [SerializeField]
-    private bool hold = false;
-    //private bool pressteleport = false;
-    private float horizontalCurrSpeed;
-    private float verticalCurrSpeed;
-    [SerializeField]
-    private GridLayout gridLayout;
-    private Vector2 resultMovement;
+    private Animator animator;
     private Rigidbody2D rgb2d;
+
+    // Stats
+
+    public float maxMovSpeed;
+    public float maxGrabSpeed;
+
+    private float horizontalIput;
+    private float verticalInput;
+    private Vector2 resultMovement;
+    [SerializeField]
+    private bool isHolding;
+
+    // Game Object Reference
+
+    private GridLayout gridLayout;
     private GameObject slime;
+
+    private void Awake()
+    {
+        rgb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
 
     public void Start()
     {
-        rgb2d = GetComponent<Rigidbody2D>();
         gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
+
+        isHolding = false;
     }
 
     public void Update()
     {
-        if (!hold) {
-            horizontalCurrSpeed = Input.GetAxisRaw("Horizontal");
-            verticalCurrSpeed = Input.GetAxisRaw("Vertical");
 
-            if (horizontalCurrSpeed < 0)
+        if (!isHolding)
+        {
+            horizontalIput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+
+            if (horizontalIput < 0)
             {
+
                 GetComponent<SpriteRenderer>().flipX = true;
             }
-            else if (horizontalCurrSpeed > 0)
+            else if (horizontalIput > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
             }
 
-            resultMovement = new Vector2(horizontalCurrSpeed, verticalCurrSpeed);
-            resultMovement = resultMovement.normalized * moveSpeed;
-            //Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
-            //Debug.Log(cellPosition);
+            resultMovement = new Vector2(horizontalIput, verticalInput);
+            resultMovement = resultMovement.normalized * maxMovSpeed;
         }
         else
         {
             DotheSlimeMove();
-            
-            //Vector3Int cellPosition = gridLayout.WorldToCell(this.transform.position);
-            //Debug.Log(cellPosition);
-            //if (!pressteleport) {
-            //    if (Input.GetKeyDown(KeyCode.W))
-            //    {
-            //        cellPosition.y += 2;
-            //        pressteleport = true;
-            //    }
-            //    if (Input.GetKeyDown(KeyCode.S))
-            //    {
-            //        cellPosition.y -= 2;
-            //        pressteleport = true;
-            //    }
-            //    if (Input.GetKeyDown(KeyCode.D))
-            //    {
-            //        cellPosition.x += 2;
-            //        pressteleport = true;
-            //    }
-            //    if (Input.GetKeyDown(KeyCode.A))
-            //    {
-            //        cellPosition.x -= 2;
-            //        pressteleport = true;
-            //    }
-            //}
-            //if (pressteleport) {
-            //    if (this.transform.position.x < 0 && this.transform.position.y >= 0) {
-            //        //this.transform.position = new Vector3(-60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
-            //        //slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
-            //    }
-            //    else if (this.transform.position.x < 0 && this.transform.position.y < 0)
-            //    {
-            //        this.transform.position = new Vector3(-60 + (60 * cellPosition.x), -80 + (80 * cellPosition.y), 0);
-            //        slime.transform.position = new Vector3(-55 + (55 * cellPosition.x), -54 + (54 * cellPosition.y), 0);
-            //    }
-            //    else if (this.transform.position.x >= 0 && this.transform.position.y < 0)
-            //    {
-            //        this.transform.position = new Vector3(60 + (60 * cellPosition.x), -80 + (80 * cellPosition.y), 0);
-            //        slime.transform.position = new Vector3(55 + (55 * cellPosition.x), -54 + (54 * cellPosition.y), 0);
-            //    }
-            //    else if (this.transform.position.x >= 0 && this.transform.position.y >= 0)
-            //    {
-            //        this.transform.position = new Vector3(60 + (60 * cellPosition.x), 80 + (80 * cellPosition.y), 0);
-            //        slime.transform.position = new Vector3(55 + (55 * cellPosition.x), 54 + (54 * cellPosition.y), 0);
-            //    }
 
-
-            //    //hold = false;
-            //    pressteleport = false;
-            //}
         }
     }
 
@@ -110,14 +77,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Slime")
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Grab") && !isHolding)
             {
-                hold = true;
+                isHolding = true;
                 slime = other.gameObject;
+                animator.SetBool("isPushing", true);
+            }
+            else if (Input.GetButtonDown("Grab") && isHolding)
+            {
+                isHolding = false;
+                animator.SetBool("isPushing", false);
             }
         }
     }
-
 
     private void DotheSlimeMove()
     {
