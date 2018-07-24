@@ -20,15 +20,13 @@ public class SlimeLogic : MonoBehaviour
 
     //====================================================================
 
-    private void Awake()
-    {
-        // Get the tilemap of all the non-walkable tiles
-        unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
-    }
     void Start()
     {
         // Finding the grid that slime is on
         gridLayout = GameObject.Find("Grid").GetComponent<Grid>();
+
+        // Get the tilemap of all the non-walkable tiles
+        unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
 
         // Set health at the beginning
         slimeHealth = totalHealth;
