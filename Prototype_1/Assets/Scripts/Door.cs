@@ -23,7 +23,6 @@ public class Door : MonoBehaviour {
         // Get Component
         spriteRenderer = GetComponent<SpriteRenderer>();
         unWalkableTileMap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
-
     }
 
     private void Start ()

@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D rgb2d;
+    private PushPull pushPullComponent;
 
     // Stats
 
@@ -20,16 +21,19 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 resultMovement;
     [SerializeField]
     private bool isHolding;
+    [SerializeField]
+    private bool isPushing;
 
     // Game Object Reference
 
-    private GridLayout gridLayout;
-    private GameObject slime;
+    private GridLayout gridLayout;  
+    private GameObject grabbingObj;
 
     private void Awake()
     {
         rgb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        pushPullComponent = GetComponent<PushPull>();
     }
 
     public void Start()
@@ -37,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
 
         isHolding = false;
+        isPushing = false;
     }
 
     public void Update()
@@ -68,8 +73,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            DotheSlimeMove();
-
+            DoGrabMove();
         }
     }
 
@@ -79,129 +83,72 @@ public class PlayerMovement : MonoBehaviour
         resultMovement = Vector3.zero;
     }
 
-    void OnCollisionStay2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Slime")
+        if (other.gameObject.tag == "Slime" || other.gameObject.tag == "Crate")
         {
             if (Input.GetButtonDown("Grab") && !isHolding)
             {
                 isHolding = true;
-                slime = other.gameObject;
+                grabbingObj = other.gameObject;
                 animator.SetBool("isPushing", true);
             }
             else if (Input.GetButtonDown("Grab") && isHolding)
             {
                 isHolding = false;
+                grabbingObj = null;
                 animator.SetBool("isPushing", false);
             }
         }
     }
 
-    private void DotheSlimeMove()
+    private void DoGrabMove()
     {
-        // Direction variable
-        char dir = ' ';
-
-        // Get Input from player
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!isPushing && grabbingObj != null)
         {
-            dir = 'W';
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            dir = 'S';
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            dir = 'A';
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            dir = 'D';
-        }
-
-        if (dir != ' '
-            && slime.GetComponent<SlimeLogic>().CheckMoveDir(dir)
-            && this.CheckMoveDir(dir))
-        {
-            slime.GetComponent<SlimeLogic>().MoveSlime(dir);
-            MovePlayerByGrid(dir);
+            // Get Input from player
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                GridMoveAttempt('W');
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                GridMoveAttempt('S');
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                GridMoveAttempt('A');
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                GridMoveAttempt('D');
+            }
         }
     }
 
-    private bool CheckMoveDir(char _dir)
+    private void GridMoveAttempt(char _dir)
     {
-        // Get the current position on the tilemap
-        Vector3Int thisGridPos = gridLayout.WorldToCell(this.transform.position);
+        Vector3 currPos = this.transform.position;
+        currPos.y -= 35;
 
-        switch (_dir)
+        if (grabbingObj.GetComponent<PushPull>().CheckMoveDir(_dir, grabbingObj.transform.position)
+            && this.pushPullComponent.CheckMoveDir(_dir, currPos))
         {
-            case 'W':
-                thisGridPos.y++;
-                break;
-
-            case 'S':
-                thisGridPos.y--;
-                break;
-
-            case 'A':
-                thisGridPos.x--;
-                break;
-
-            case 'D':
-                thisGridPos.x++;
-                break;
-
-            default: break;
+            grabbingObj.GetComponent<PushPull>().MoveByGrid(_dir);
+            this.pushPullComponent.MoveByGrid(_dir);
+            isPushing = true;
         }
-
-        if (CheckWalkableTile(thisGridPos))
-        {
-            return true;
-        }
-
-        return false;
     }
 
-    private bool CheckWalkableTile(Vector3Int _pos)
+    public void FinishPush()
     {
-        // Get the tilemap of all the non-walkable tiles
-        Tilemap tilemap = GameObject.Find("Tilemap_NonWalkable").GetComponent<Tilemap>();
-
-        if (tilemap.HasTile(_pos))
-        {
-            return false;
-        }
-
-        return true;
+        isPushing = false;
     }
 
-    private void MovePlayerByGrid(char _dir)
+    public GameObject GetGrabbingObj()
     {
-        // Get the current position
-        Vector3 selfPos = this.transform.position;
-
-        switch (_dir)
-        {
-            case 'W':
-                selfPos.y += 108;
-                break;
-
-            case 'S':
-                selfPos.y -= 108;
-                break;
-
-            case 'A':
-                selfPos.x -= 108;
-                break;
-
-            case 'D':
-                selfPos.x += 108;
-                break;
-
-            default: break;
-        }
-
-        this.transform.position = selfPos;
+        return grabbingObj;
     }
+
+
 }
