@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
-    public bool pickedUp;
+    public bool pickedUp = false;
 
     public void GainPickUp()
     {
