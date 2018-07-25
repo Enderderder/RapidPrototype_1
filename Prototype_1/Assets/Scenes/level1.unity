@@ -737,56 +737,6 @@ Prefab:
       propertyPath: m_Name
       value: Crate (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[3].x
-      value: -56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[3].y
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[2].x
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[2].y
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[1].y
-      value: -56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[1].x
-      value: 56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[0].y
-      value: -56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[0].x
-      value: -56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[4].y
-      value: -56
-      objectReference: {fileID: 0}
-    - target: {fileID: 68138489560804502, guid: 2cc903746dd5d654aa61680b686f0b93,
-        type: 2}
-      propertyPath: m_Points.Array.data[4].x
-      value: -56
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2cc903746dd5d654aa61680b686f0b93, type: 2}
   m_IsPrefabParent: 0
@@ -1405,8 +1355,8 @@ SortingGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 281257560}
   m_Enabled: 1
-  m_SortingLayerID: 806432499
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!156049354 &281257562
 Grid:
