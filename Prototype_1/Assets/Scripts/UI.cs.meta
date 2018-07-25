@@ -1,11 +1,24 @@
 fileFormatVersion: 2
 guid: 2c681b1448abe354da52b65a3a3fd987
-timeCreated: 1532474812
+timeCreated: 1532490766
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - SlimeIndicator: {fileID: 114046451589586716, guid: 978780861898a0b4ca4bd0c7cebc0989,
+      type: 2}
+  - pickupIndicator: {fileID: 114752143025854882, guid: ab516a657f512a64988d16cb19db68e4,
+      type: 2}
+  - slimeHealth1Sprite: {fileID: 21300000, guid: d49e527f4d6d9794fb789e2466434cc2,
+      type: 3}
+  - slimeHealth2Sprite: {fileID: 21300000, guid: 49db9b5a35f6754488bb1190f6e33b8d,
+      type: 3}
+  - slimeHealth3Sprite: {fileID: 21300000, guid: fb3d9bcef40635f47a402d4760f3dc16,
+      type: 3}
+  - pickedUpSprite: {fileID: 21300000, guid: 258c6174f4a7d48449bc3a0f06096bac, type: 3}
+  - notPickedUpSprite: {fileID: 21300000, guid: 501fdba90ebe34a4db6d2e957a2aa2da,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

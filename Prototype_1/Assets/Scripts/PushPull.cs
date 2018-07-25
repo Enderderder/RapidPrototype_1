@@ -18,7 +18,6 @@ public class PushPull : MonoBehaviour
     public Vector3 moveTaskStart;
     public Vector3 moveTaskEnd;
 
-
     public Vector3Int currTile;
     public Vector3Int prevTile;
 
@@ -42,16 +41,19 @@ public class PushPull : MonoBehaviour
             "Tilemap_NonWalkable").GetComponent<Tilemap>();
 
         // Get player
-        playerMove = GameObject.FindGameObjectWithTag(
+        playerMove = GameObject.Find(
             "Player").GetComponent<PlayerMovement>();
 
         // Set starting value
         percentTrue = 0.0f;
         isMoving = false;
 
-        currTile = gridLayout.WorldToCell(this.transform.position);
-        prevTile = currTile;
-        unWalkableTileMap.SetTile(currTile, unWalkableTile);
+        if (this.gameObject.tag != "Player")
+        {
+            currTile = gridLayout.WorldToCell(this.transform.position);
+            prevTile = currTile;
+            unWalkableTileMap.SetTile(currTile, unWalkableTile);
+        }
     }
 
     void Update()
@@ -133,11 +135,13 @@ public class PushPull : MonoBehaviour
 
     private bool CheckWalkableTile(Vector3Int _pos)
     {
-        if (_pos == gridLayout.WorldToCell(
-            playerMove.GetGrabbingObj().transform.position))
+        if (playerMove.GetGrabbingObj() != null &&
+            _pos == gridLayout.WorldToCell(
+                playerMove.GetGrabbingObj().transform.position))
         {
             return true;
         }
+
         else if (unWalkableTileMap.HasTile(_pos))
         {
             return false;

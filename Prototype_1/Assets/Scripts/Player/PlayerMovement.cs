@@ -54,22 +54,53 @@ public class PlayerMovement : MonoBehaviour
 
             if (horizontalIput < 0)
             {
+                if (this.pushPullComponent.CheckMoveDir('A', this.transform.position))
+                {
+                    this.pushPullComponent.MoveByGrid('A');
+                }
 
-                GetComponent<SpriteRenderer>().flipX = true;
+                GetComponentInChildren<SpriteRenderer>().flipX = true;
                 animator.SetBool("isWalking", true);
+                isPushing = true;
             }
             else if (horizontalIput > 0)
             {
-                GetComponent<SpriteRenderer>().flipX = false;
+                if (this.pushPullComponent.CheckMoveDir('D', this.transform.position))
+                {
+                    this.pushPullComponent.MoveByGrid('D');
+                }
+                
+                GetComponentInChildren<SpriteRenderer>().flipX = false;
                 animator.SetBool("isWalking", true);
+                isPushing = true;
+            }
+            else if (verticalInput > 0)
+            {
+                if (this.pushPullComponent.CheckMoveDir('W', this.transform.position))
+                {
+                    this.pushPullComponent.MoveByGrid('W');
+                }
+
+                animator.SetBool("isWalking", true);
+                isPushing = true;
+            }
+            else if (verticalInput < 0)
+            {
+                if (this.pushPullComponent.CheckMoveDir('S', this.transform.position))
+                {
+                    this.pushPullComponent.MoveByGrid('S');
+                }
+
+                animator.SetBool("isWalking", true);
+                isPushing = true;
             }
             else
             {
                 animator.SetBool("isWalking", false);
             }
 
-            resultMovement = new Vector2(horizontalIput, verticalInput);
-            resultMovement = resultMovement.normalized * maxMovSpeed;
+            //resultMovement = new Vector2(horizontalIput, verticalInput);
+            //resultMovement = resultMovement.normalized * maxMovSpeed;
         }
         else
         {
@@ -79,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        rgb2d.velocity = resultMovement * ( Time.deltaTime * 100 );
-        resultMovement = Vector3.zero;
+        //rgb2d.velocity = resultMovement * ( Time.deltaTime * 100 );
+        //resultMovement = Vector3.zero;
     }
 
     void OnTriggerStay2D(Collider2D other)
