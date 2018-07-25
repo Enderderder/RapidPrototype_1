@@ -49,9 +49,12 @@ public class PushPull : MonoBehaviour
         percentTrue = 0.0f;
         isMoving = false;
 
-        currTile = gridLayout.WorldToCell(this.transform.position);
-        prevTile = currTile;
-        unWalkableTileMap.SetTile(currTile, unWalkableTile);
+        if (this.gameObject.tag != "Player")
+        {
+            currTile = gridLayout.WorldToCell(this.transform.position);
+            prevTile = currTile;
+            unWalkableTileMap.SetTile(currTile, unWalkableTile);
+        }
     }
 
     void Update()
