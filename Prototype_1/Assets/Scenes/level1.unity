@@ -5920,7 +5920,7 @@ GameObject:
   - component: {fileID: 1069911995}
   - component: {fileID: 1069911994}
   - component: {fileID: 1069911993}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Tilemap_NonWalkable
   m_TagString: Tilemap
   m_Icon: {fileID: 0}

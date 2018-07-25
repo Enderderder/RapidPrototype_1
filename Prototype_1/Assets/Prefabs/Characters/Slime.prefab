@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114073606366547602}
   - component: {fileID: 114630183254620466}
   - component: {fileID: 210895996216096438}
+  - component: {fileID: 68717412252256896}
   m_Layer: 8
   m_Name: Slime
   m_TagString: Slime
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1112161363650482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -378, y: -270, z: 0}
+  m_LocalPosition: {x: -270, y: 54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -90,6 +91,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!68 &68717412252256896
+EdgeCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1112161363650482}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -54, y: -54}
+  - {x: 54, y: -54}
+  - {x: 54, y: 54}
+  - {x: -54, y: 54}
+  - {x: -54, y: -54}
 --- !u!114 &114073606366547602
 MonoBehaviour:
   m_ObjectHideFlags: 1
