@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour
     // Component
 
     private Animator animator;
-    private Rigidbody2D rgb2d;
-    private PushPull pushPullComponent;
+    //private Rigidbody2D rgb2d;
+    private PushPull gridMoveComponent;
+    private BoxCollider2D boxCollider;
+    private SpriteRenderer spriteRenderer;
 
     // Stats
 
@@ -22,76 +24,90 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool isHolding;
     [SerializeField]
-    private bool isPushing;
+    private bool isGridMoving;
 
     // Game Object Reference
 
-    private GridLayout gridLayout;  
+    //private GridLayout gridLayout;  
     private GameObject grabbingObj;
 
     private void Awake()
     {
-        rgb2d = GetComponent<Rigidbody2D>();
+        //rgb2d = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        pushPullComponent = GetComponent<PushPull>();
+        gridMoveComponent = GetComponent<PushPull>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void Start()
     {
-        gridLayout = GameObject.Find("Grid").GetComponent<GridLayout>();
+
+        // Set the collider direction and sprite facing
+        spriteRenderer.flipX = false;
+        boxCollider.offset = new Vector2(35.0f, 0.0f);
+        boxCollider.size = new Vector2(75.0f, 1.0f);
 
         isHolding = false;
-        isPushing = false;
+        isGridMoving = false;
     }
 
     public void Update()
     {
 
-        if (!isHolding && !isPushing)
+        if (!isHolding && !isGridMoving)
         {
             horizontalIput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
 
             if (horizontalIput < 0)
             {
-                //GetComponentInChildren<SpriteRenderer>().flipX = true;
-                this.gameObject.transform.localScale = new Vector3(-1, 1, 1);
+                spriteRenderer.flipX = true;
+                boxCollider.offset = new Vector2(-35.0f, 0.0f);
+                boxCollider.size = new Vector2(75.0f, 1.0f);
 
-                if (this.pushPullComponent.CheckMoveDir('A', this.transform.position))
+                if (this.gridMoveComponent.CheckMoveDir('A', this.transform.position))
                 {
-                    this.pushPullComponent.MoveByGrid('A');
+                    this.gridMoveComponent.MoveByGrid('A');
                     animator.SetBool("isWalking", true);
-                    isPushing = true;
+                    isGridMoving = true;
                 }
             }
             else if (horizontalIput > 0)
             {
-                //GetComponentInChildren<SpriteRenderer>().flipX = false;
-                this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                spriteRenderer.flipX = false;
+                boxCollider.offset = new Vector2(35.0f, 0.0f);
+                boxCollider.size = new Vector2(75.0f, 1.0f);
 
-                if (this.pushPullComponent.CheckMoveDir('D', this.transform.position))
+                if (this.gridMoveComponent.CheckMoveDir('D', this.transform.position))
                 {
-                    this.pushPullComponent.MoveByGrid('D');
+                    this.gridMoveComponent.MoveByGrid('D');
                     animator.SetBool("isWalking", true);
-                    isPushing = true;
+                    isGridMoving = true;
                 }
             }
             else if (verticalInput > 0)
             {
-                if (this.pushPullComponent.CheckMoveDir('W', this.transform.position))
+                boxCollider.offset = new Vector2(0.0f, 35.0f);
+                boxCollider.size = new Vector2(1.0f, 75.0f);
+
+                if (this.gridMoveComponent.CheckMoveDir('W', this.transform.position))
                 {
-                    this.pushPullComponent.MoveByGrid('W');
+                    this.gridMoveComponent.MoveByGrid('W');
                     animator.SetBool("isWalking", true);
-                    isPushing = true;
+                    isGridMoving = true;
                 }
             }
             else if (verticalInput < 0)
             {
-                if (this.pushPullComponent.CheckMoveDir('S', this.transform.position))
+                boxCollider.offset = new Vector2(0.0f, -35.0f);
+                boxCollider.size = new Vector2(1.0f, 75.0f);
+
+                if (this.gridMoveComponent.CheckMoveDir('S', this.transform.position))
                 {
-                    this.pushPullComponent.MoveByGrid('S');
+                    this.gridMoveComponent.MoveByGrid('S');
                     animator.SetBool("isWalking", true);
-                    isPushing = true;
+                    isGridMoving = true;
                 }
             }
             else
@@ -105,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             DoGrabMove();
+            
         }
     }
 
@@ -128,7 +145,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 isHolding = true;
                 grabbingObj = other.gameObject;
-                Debug.Log(grabbingObj);
                 animator.SetBool("isPushing", true);
             }
             else if (Input.GetButtonDown("Grab") && isHolding)
@@ -142,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void DoGrabMove()
     {
-        if (!isPushing && grabbingObj != null)
+        if (!isGridMoving && grabbingObj != null)
         {
             // Get Input from player
             if (Input.GetKeyDown(KeyCode.W))
@@ -170,17 +186,17 @@ public class PlayerMovement : MonoBehaviour
         currPos.y -= 35;
 
         if (grabbingObj.GetComponent<PushPull>().CheckMoveDir(_dir, grabbingObj.transform.position)
-            && this.pushPullComponent.CheckMoveDir(_dir, currPos))
+            && this.gridMoveComponent.CheckMoveDir(_dir, currPos))
         {
             grabbingObj.GetComponent<PushPull>().MoveByGrid(_dir);
-            this.pushPullComponent.MoveByGrid(_dir);
-            isPushing = true;
+            this.gridMoveComponent.MoveByGrid(_dir);
+            isGridMoving = true;
         }
     }
 
     public void FinishPush()
     {
-        isPushing = false;
+        isGridMoving = false;
     }
 
     public GameObject GetGrabbingObj()
@@ -188,5 +204,8 @@ public class PlayerMovement : MonoBehaviour
         return grabbingObj;
     }
 
-
+    public bool GetIsHolding()
+    {
+        return isHolding;
+    }
 }

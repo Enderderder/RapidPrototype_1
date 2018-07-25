@@ -12,6 +12,7 @@ public class SlimeLogic : MonoBehaviour
 
     public bool isMoving;
     public int totalHealth;
+    public int slimeHealth;
 
     [SerializeField]
     private Sprite slimeSprite1;
@@ -19,8 +20,6 @@ public class SlimeLogic : MonoBehaviour
     private Sprite slimeSprite2;
     [SerializeField]
     private Sprite slimeSprite3;
-
-    public int slimeHealth;
 
     // Object Reference
 

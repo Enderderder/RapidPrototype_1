@@ -7,7 +7,8 @@ public class PushPull : MonoBehaviour
 {
     // Constant Variable
 
-    private const float MOVETIME = 0.25f;
+    public const float NORMALMOVETIME = 0.25f;
+    public const float GRABBINGMOVETIME = 0.5f;
 
     // Stat
 
@@ -77,7 +78,11 @@ public class PushPull : MonoBehaviour
         {
 
             Vector3 distance = moveTaskEnd - moveTaskStart;
-            percentThisMove = Time.deltaTime / MOVETIME;
+            if (playerMove.GetIsHolding())
+            {
+                percentThisMove = Time.deltaTime / GRABBINGMOVETIME;
+            } else percentThisMove = Time.deltaTime / NORMALMOVETIME;
+
             percentTrue += percentThisMove;
 
             if (percentTrue > 1.0f)

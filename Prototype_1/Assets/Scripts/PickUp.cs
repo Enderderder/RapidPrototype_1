@@ -14,9 +14,9 @@ public class PickUp : MonoBehaviour
         }
         else if (_other.gameObject.tag == "Player")
         {
-            if (!_other.gameObject.GetComponent<PlayerLogic>().pickedUp)
+            if (!_other.gameObject.GetComponentInParent<PlayerLogic>().pickedUp)
             {
-                _other.gameObject.GetComponent<PlayerLogic>().GainPickUp();
+                _other.gameObject.GetComponentInParent<PlayerLogic>().GainPickUp();
                 Destroy(this.gameObject);
             }
             return;
