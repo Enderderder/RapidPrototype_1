@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212797001413165172}
   - component: {fileID: 61638715847593422}
   - component: {fileID: 114380195676592684}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: HealthPickUp
   m_TagString: PickUp
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1324753399266306}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181, y: -33, z: 0}
+  m_LocalPosition: {x: -54, y: -54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 35, y: 35}
+  m_Size: {x: 30, y: 30}
   m_EdgeRadius: 0
 --- !u!114 &114380195676592684
 MonoBehaviour:

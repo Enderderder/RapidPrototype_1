@@ -4,10 +4,15 @@ using UnityEngine.UI;
 
 public class SlimeLogic : MonoBehaviour
 {
+    // Components
+
+    private SpriteRenderer spriteRenderer;
+
     // Stats
 
     public bool isMoving;
     public int totalHealth;
+    public int slimeHealth;
 
     [SerializeField]
     private Sprite slimeSprite1;
@@ -16,18 +21,20 @@ public class SlimeLogic : MonoBehaviour
     [SerializeField]
     private Sprite slimeSprite3;
 
-    public int slimeHealth;
-
-    private SpriteRenderer spriteRenderer;
+    // Object Reference
 
     private Tilemap unWalkableTileMap;
-
-    // Private Variables
-
     private GridLayout gridLayout;
 
 
     //====================================================================
+
+    void Awake()
+    {
+        // Get Component
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -39,8 +46,6 @@ public class SlimeLogic : MonoBehaviour
 
         // Set health at the beginning
         slimeHealth = totalHealth;
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()

@@ -154,12 +154,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6c9eb2a95772a7a4cab29b39bc49f9dd, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &111753983 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114165737496488552, guid: 6c9eb2a95772a7a4cab29b39bc49f9dd,
-    type: 2}
-  m_PrefabInternal: {fileID: 111753982}
-  m_Script: {fileID: 11500000, guid: 65290becadb0ea04e8db4f61e0a0b88b, type: 3}
 --- !u!1 &150095036
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,7 +378,7 @@ GameObject:
   - component: {fileID: 1770200584}
   - component: {fileID: 1770200583}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MainMenu_But
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +442,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 111753983}
+      - m_Target: {fileID: 114165737496488552, guid: 6c9eb2a95772a7a4cab29b39bc49f9dd,
+          type: 2}
         m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -624,7 +619,7 @@ RectTransform:
   m_GameObject: {fileID: 1936572511}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.9999047, y: 0.9999047, z: 0.9999047}
+  m_LocalScale: {x: 0.9235128, y: 0.9235128, z: 0.9235128}
   m_Children:
   - {fileID: 150095037}
   - {fileID: 1770200582}

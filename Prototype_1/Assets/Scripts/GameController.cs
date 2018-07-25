@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("TestingScene");
+        SceneManager.LoadScene("Level1");
     }
 
     public void QuitGame()
