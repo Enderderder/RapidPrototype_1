@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D rgb2d;
-    private PushPull pushPullComponent;
+    private GridMove pushPullComponent;
 
     // Stats
 

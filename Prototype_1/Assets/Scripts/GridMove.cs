@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PushPull : MonoBehaviour
+public class GridMove : MonoBehaviour
 {
     // Constant Variable
 
