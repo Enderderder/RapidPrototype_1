@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rgb2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         pushPullComponent = GetComponent<PushPull>();
     }
 
@@ -47,52 +47,52 @@ public class PlayerMovement : MonoBehaviour
     public void Update()
     {
 
-        if (!isHolding)
+        if (!isHolding && !isPushing)
         {
             horizontalIput = Input.GetAxisRaw("Horizontal");
             verticalInput = Input.GetAxisRaw("Vertical");
 
             if (horizontalIput < 0)
             {
+                //GetComponentInChildren<SpriteRenderer>().flipX = true;
+                this.gameObject.transform.localScale = new Vector3(-1, 1, 1);
+
                 if (this.pushPullComponent.CheckMoveDir('A', this.transform.position))
                 {
                     this.pushPullComponent.MoveByGrid('A');
+                    animator.SetBool("isWalking", true);
+                    isPushing = true;
                 }
-
-                GetComponentInChildren<SpriteRenderer>().flipX = true;
-                animator.SetBool("isWalking", true);
-                isPushing = true;
             }
             else if (horizontalIput > 0)
             {
+                //GetComponentInChildren<SpriteRenderer>().flipX = false;
+                this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+
                 if (this.pushPullComponent.CheckMoveDir('D', this.transform.position))
                 {
                     this.pushPullComponent.MoveByGrid('D');
+                    animator.SetBool("isWalking", true);
+                    isPushing = true;
                 }
-                
-                GetComponentInChildren<SpriteRenderer>().flipX = false;
-                animator.SetBool("isWalking", true);
-                isPushing = true;
             }
             else if (verticalInput > 0)
             {
                 if (this.pushPullComponent.CheckMoveDir('W', this.transform.position))
                 {
                     this.pushPullComponent.MoveByGrid('W');
+                    animator.SetBool("isWalking", true);
+                    isPushing = true;
                 }
-
-                animator.SetBool("isWalking", true);
-                isPushing = true;
             }
             else if (verticalInput < 0)
             {
                 if (this.pushPullComponent.CheckMoveDir('S', this.transform.position))
                 {
                     this.pushPullComponent.MoveByGrid('S');
+                    animator.SetBool("isWalking", true);
+                    isPushing = true;
                 }
-
-                animator.SetBool("isWalking", true);
-                isPushing = true;
             }
             else
             {
@@ -128,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 isHolding = true;
                 grabbingObj = other.gameObject;
+                Debug.Log(grabbingObj);
                 animator.SetBool("isPushing", true);
             }
             else if (Input.GetButtonDown("Grab") && isHolding)

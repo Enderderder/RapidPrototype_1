@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class SlimeLogic : MonoBehaviour
 {
+    // Components
+
+    private SpriteRenderer spriteRenderer;
+
     // Stats
 
     public bool isMoving;
@@ -18,16 +22,20 @@ public class SlimeLogic : MonoBehaviour
 
     public int slimeHealth;
 
-    private SpriteRenderer spriteRenderer;
+    // Object Reference
 
     private Tilemap unWalkableTileMap;
-
-    // Private Variables
-
     private GridLayout gridLayout;
 
 
     //====================================================================
+
+    void Awake()
+    {
+        // Get Component
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -39,8 +47,6 @@ public class SlimeLogic : MonoBehaviour
 
         // Set health at the beginning
         slimeHealth = totalHealth;
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()

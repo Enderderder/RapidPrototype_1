@@ -7,7 +7,7 @@ public class PushPull : MonoBehaviour
 {
     // Constant Variable
 
-    private const float MOVETIME = 0.5f;
+    private const float MOVETIME = 0.25f;
 
     // Stat
 
