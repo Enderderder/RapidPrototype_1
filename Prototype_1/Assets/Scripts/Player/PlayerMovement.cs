@@ -133,9 +133,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Slime1" || other.gameObject.tag == "Crate")
+        if (other.gameObject.tag == "Slime" || other.gameObject.tag == "Crate")
         {
-            if (GetComponent<PlayerLogic>().pickedUp && other.gameObject.tag == "Slime1")
+            if (GetComponent<PlayerLogic>().pickedUp && other.gameObject.tag == "Slime")
             {
                 GetComponent<PlayerLogic>().GivePickUp();
                 other.gameObject.GetComponent<SlimeLogic>().HealthUp();

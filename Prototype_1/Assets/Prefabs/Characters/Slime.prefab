@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 68717412252256896}
   m_Layer: 9
   m_Name: Slime
-  m_TagString: Slime1
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,9 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4057288552955744}
   - component: {fileID: 212587440465252558}
+  - component: {fileID: 95460594489394248}
   m_Layer: 8
   m_Name: RootComponent
-  m_TagString: Slime
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1112161363650482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -270, y: 54, z: 0}
+  m_LocalPosition: {x: -378, y: -270, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4057288552955744}
@@ -140,6 +141,23 @@ EdgeCollider2D:
   - {x: 54, y: 54}
   - {x: -54, y: 54}
   - {x: -54, y: -54}
+--- !u!95 &95460594489394248
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352824425983430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4dd5432973483f945907527be57f3045, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114073606366547602
 MonoBehaviour:
   m_ObjectHideFlags: 1
