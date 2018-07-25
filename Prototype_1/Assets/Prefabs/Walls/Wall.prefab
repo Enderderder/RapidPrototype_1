@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212032522761739164}
   - component: {fileID: 61467746589175722}
   m_Layer: 0
-  m_Name: WallTop
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503462392295176}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 270, y: 270, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 108, y: -55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,8 +97,13 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+<<<<<<< HEAD:Prototype_1/Assets/Prefabs/Walls/WallTop.prefab
   m_SortingLayerID: -1816865591
   m_SortingLayer: 4
+=======
+  m_SortingLayerID: -1277386145
+  m_SortingLayer: 5
+>>>>>>> Sub_Prototype:Prototype_1/Assets/Prefabs/Walls/Wall.prefab
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f246e66275f826b4ca0daf96b69d9ce6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
