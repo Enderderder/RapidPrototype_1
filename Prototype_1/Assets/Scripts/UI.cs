@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class UI : MonoBehaviour {
 
     [Header("Characters:")]
-    public SlimeLogic slime;
+    private SlimeLogic slime;
     private PlayerLogic player;
 
     [Header("UI:")]
     public Image SlimeIndicator;
     public Image pickupIndicator;
 
-    [Header("Slime Health Indicatior Sprites:")]
+    [Header("Slime Health Indicator Sprites:")]
     public Sprite slimeHealth1Sprite;
     public Sprite slimeHealth2Sprite;
     public Sprite slimeHealth3Sprite;
@@ -25,6 +25,7 @@ public class UI : MonoBehaviour {
     private void Start()
     {
         player = gameObject.GetComponent<PlayerLogic>();
+        slime = GameObject.FindGameObjectWithTag("Slime").GetComponent<SlimeLogic>();
     }
 
     private void Update()
