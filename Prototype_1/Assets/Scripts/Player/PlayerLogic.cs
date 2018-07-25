@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
-    // Stats
-
-    public int pickUpCount;
-
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+    public bool pickedUp;
 
     public void GainPickUp()
     {
-        pickUpCount++;
+        pickedUp = true;
+    }
+
+    public void GivePickUp()
+    {
+        pickedUp = false;
     }
 }

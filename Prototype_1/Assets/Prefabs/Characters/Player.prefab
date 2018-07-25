@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114732590031629826}
   - component: {fileID: 114758021437677300}
   - component: {fileID: 95542177662324252}
+  - component: {fileID: 114984473028067070}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1001803186282518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -195, y: 72.5, z: 0}
+  m_LocalPosition: {x: -383, y: -378, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +59,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 706.85834
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -113,6 +114,7 @@ MonoBehaviour:
   maxMovSpeed: 300
   maxGrabSpeed: 200
   isHolding: 0
+  isPushing: 0
 --- !u!114 &114732590031629826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83c8283d809ba848800f72c2c57a9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMoving: 0
+  percentTrue: 0
+  percentThisMove: 0
+  moveTaskStart: {x: 0, y: 0, z: 0}
+  moveTaskEnd: {x: 0, y: 0, z: 0}
+  currTile: {x: 0, y: 0, z: 0}
+  prevTile: {x: 0, y: 0, z: 0}
+  unWalkableTile: {fileID: 0}
 --- !u!114 &114758021437677300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,7 +145,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e173ba708ff7840a9e4df5ad69609b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickUpCount: 0
+  pickedUp: 0
+--- !u!114 &114984473028067070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1001803186282518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c681b1448abe354da52b65a3a3fd987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slime: {fileID: 0}
+  SlimeIndicator: {fileID: 0}
+  pickupIndicator: {fileID: 0}
+  slimeHealth1Sprite: {fileID: 21300000, guid: d49e527f4d6d9794fb789e2466434cc2, type: 3}
+  slimeHealth2Sprite: {fileID: 21300000, guid: 49db9b5a35f6754488bb1190f6e33b8d, type: 3}
+  slimeHealth3Sprite: {fileID: 21300000, guid: fb3d9bcef40635f47a402d4760f3dc16, type: 3}
+  pickedUpSprite: {fileID: 21300000, guid: 258c6174f4a7d48449bc3a0f06096bac, type: 3}
+  notPickedUpSprite: {fileID: 21300000, guid: 501fdba90ebe34a4db6d2e957a2aa2da, type: 3}
 --- !u!210 &210133118420150640
 SortingGroup:
   m_ObjectHideFlags: 1

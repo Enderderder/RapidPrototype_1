@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class SlimeLogic : MonoBehaviour
 {
@@ -15,8 +16,7 @@ public class SlimeLogic : MonoBehaviour
     [SerializeField]
     private Sprite slimeSprite3;
 
-    [SerializeField]
-    private int slimeHealth;
+    public int slimeHealth;
 
     private SpriteRenderer spriteRenderer;
 
@@ -51,7 +51,6 @@ public class SlimeLogic : MonoBehaviour
                 spriteRenderer.sprite = slimeSprite1;
                 break;
             case 2:
-                Debug.Log("dsgfasgdfsgknjdfsjifg");
                 spriteRenderer.sprite = slimeSprite2;
                 break;
             case 3:

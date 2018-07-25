@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour
 {
-	//void Start ()
-    //{
-		
-	//}
-	
-
     private void OnTriggerEnter2D(Collider2D _other)
     {
         if(_other.gameObject.tag == "Slime")
@@ -20,8 +14,11 @@ public class PickUp : MonoBehaviour
         }
         else if (_other.gameObject.tag == "Player")
         {
-            _other.gameObject.GetComponent<PlayerLogic>().GainPickUp();
-            Destroy(this.gameObject);
+            if (!_other.gameObject.GetComponent<PlayerLogic>().pickedUp)
+            {
+                _other.gameObject.GetComponent<PlayerLogic>().GainPickUp();
+                Destroy(this.gameObject);
+            }
             return;
         }
     }
