@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Slime" || other.gameObject.tag == "Crate")
         {
-            if (GetComponent<PlayerLogic>().pickedUp)
+            if (GetComponent<PlayerLogic>().pickedUp && other.gameObject.tag == "Slime")
             {
                 GetComponent<PlayerLogic>().GivePickUp();
                 other.gameObject.GetComponent<SlimeLogic>().HealthUp();
