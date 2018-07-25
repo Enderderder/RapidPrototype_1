@@ -21,7 +21,7 @@ public class UI : MonoBehaviour {
     private void Start()
     {
         player = gameObject.GetComponent<PlayerLogic>();
-        slime = GameObject.FindGameObjectWithTag("Slime").GetComponent<SlimeLogic>();
+        slime = GameObject.FindGameObjectWithTag("Slime1").GetComponent<SlimeLogic>();
     }
 
     private void Update()

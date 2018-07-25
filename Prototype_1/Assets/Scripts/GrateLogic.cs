@@ -28,7 +28,7 @@ public class GrateLogic : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        if (_other.gameObject.tag == "Slime")
+        if (_other.gameObject.tag == "Slime1")
         {
             FillGrate();
             _other.GetComponent<SlimeLogic>().HealthDown();

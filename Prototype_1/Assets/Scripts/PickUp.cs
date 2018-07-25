@@ -6,7 +6,7 @@ public class PickUp : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D _other)
     {
-        if(_other.gameObject.tag == "Slime")
+        if(_other.gameObject.tag == "Slime1")
         {
             _other.gameObject.GetComponent<SlimeLogic>().HealthUp();
             Destroy(this.gameObject);
