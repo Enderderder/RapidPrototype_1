@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b83c8283d809ba848800f72c2c57a9d5
+timeCreated: 1532469004
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - unWalkableTile: {fileID: 11400000, guid: e55a15ac172e37d418f6a4a643f3e4d4, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

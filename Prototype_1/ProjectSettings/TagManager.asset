@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Crate
+  - Slime
+  - Standable
+  - Tilemap
+  - Grate
+  - PickUp
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -13,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - WorldObject
+  - Interactable
   - 
   - 
   - 
@@ -40,4 +47,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 556001799
+    locked: 0
+  - name: Object_Below
+    uniqueID: 806432499
+    locked: 0
+  - name: Ground
+    uniqueID: 3284150075
+    locked: 0
+  - name: Object
+    uniqueID: 2478101705
+    locked: 0
+  - name: Object_Above
+    uniqueID: 3017581151
+    locked: 0
+  - name: UI
+    uniqueID: 3811473541
     locked: 0

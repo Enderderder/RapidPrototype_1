@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 40e8f0c8bcbd59c4585788a38f7c6eca
+timeCreated: 1532330613
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - plateUpSprite: {fileID: 21300000, guid: 122bc3f1acef39d4ea02fb21ca83d3d3, type: 3}
+  - plateDownSprite: {fileID: 21300000, guid: e11e2c99ad52cf840969eef8965d7f56, type: 3}
+  - connectedDoor: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
