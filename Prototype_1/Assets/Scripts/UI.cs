@@ -18,10 +18,6 @@ public class UI : MonoBehaviour {
     public Sprite slimeHealth2Sprite;
     public Sprite slimeHealth3Sprite;
 
-    [Header("Pickup Indicator Sprites:")]
-    public Sprite pickedUpSprite;
-    public Sprite notPickedUpSprite;
-
     private void Start()
     {
         player = gameObject.GetComponent<PlayerLogic>();
@@ -46,11 +42,11 @@ public class UI : MonoBehaviour {
 
         if (!player.pickedUp)
         {
-            pickupIndicator.sprite = notPickedUpSprite;
+            pickupIndicator.color = new Vector4(0.3f, 0.3f, 0.3f, 1.0f);
         }
         else
         {
-            pickupIndicator.sprite = pickedUpSprite;
+            pickupIndicator.color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
         }
     }
 }
