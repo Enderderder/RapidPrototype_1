@@ -54,12 +54,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+		GetDirectionInput();
 
-        if (!isHolding && !isGridMoving)
+		if (!isHolding && !isGridMoving)
         {
-            horizontalIput = Input.GetAxisRaw("Horizontal");
-            verticalInput = Input.GetAxisRaw("Vertical");
-
             if (horizontalIput < 0)
             {
                 spriteRenderer.flipX = true;
@@ -114,21 +112,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 animator.SetBool("isWalking", false);
             }
-
-            //resultMovement = new Vector2(horizontalIput, verticalInput);
-            //resultMovement = resultMovement.normalized * maxMovSpeed;
         }
         else
         {
             DoGrabMove();
-            
         }
-    }
-
-    public void FixedUpdate()
-    {
-        //rgb2d.velocity = resultMovement * ( Time.deltaTime * 100 );
-        //resultMovement = Vector3.zero;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -161,19 +149,19 @@ public class PlayerMovement : MonoBehaviour
         if (!isGridMoving && grabbingObj != null)
         {
             // Get Input from player
-            if (Input.GetKeyDown(KeyCode.W))
+            if (verticalInput > 0)
             {
                 GridMoveAttempt('W');
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (verticalInput < 0)
             {
                 GridMoveAttempt('S');
             }
-            else if (Input.GetKeyDown(KeyCode.A))
+            else if (horizontalIput < 0)
             {
                 GridMoveAttempt('A');
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (horizontalIput > 0)
             {
                 GridMoveAttempt('D');
             }
@@ -208,4 +196,10 @@ public class PlayerMovement : MonoBehaviour
     {
         return isHolding;
     }
+
+	private void GetDirectionInput()
+	{
+		horizontalIput = Input.GetAxisRaw("Horizontal");
+		verticalInput = Input.GetAxisRaw("Vertical");
+	}
 }
