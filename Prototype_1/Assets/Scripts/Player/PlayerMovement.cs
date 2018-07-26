@@ -133,13 +133,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 isHolding = true;
                 grabbingObj = other.gameObject;
-                animator.SetBool("isPushing", true);
+                animator.SetBool("isGrabbing", true);
             }
             else if (Input.GetButtonDown("Grab") && isHolding)
             {
                 isHolding = false;
                 grabbingObj = null;
-                animator.SetBool("isPushing", false);
+                animator.SetBool("isGrabbing", false);
             }
         }
     }
