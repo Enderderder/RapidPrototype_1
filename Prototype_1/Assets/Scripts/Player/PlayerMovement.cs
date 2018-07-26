@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private PushPull gridMoveComponent;
     private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
+	private PlayerLogic logicComponent;
 
     // Stats
 
@@ -35,8 +36,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //rgb2d = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        gridMoveComponent = GetComponent<PushPull>();
-        boxCollider = GetComponent<BoxCollider2D>();
+		gridMoveComponent = GetComponent<PushPull>();
+		logicComponent = GetComponent<PlayerLogic>();
+		boxCollider = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
@@ -45,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Set the collider direction and sprite facing
         spriteRenderer.flipX = false;
-        boxCollider.offset = new Vector2(35.0f, 0.0f);
-        boxCollider.size = new Vector2(75.0f, 1.0f);
+        boxCollider.offset = new Vector2(60.0f, 0.0f);
+        boxCollider.size = new Vector2(30.0f, 1.0f);
 
         isHolding = false;
         isGridMoving = false;
@@ -61,10 +63,10 @@ public class PlayerMovement : MonoBehaviour
             if (horizontalIput < 0)
             {
                 spriteRenderer.flipX = true;
-                boxCollider.offset = new Vector2(-35.0f, 0.0f);
-                boxCollider.size = new Vector2(75.0f, 1.0f);
+				boxCollider.offset = new Vector2(-60.0f, 0.0f);
+				boxCollider.size = new Vector2(30.0f, 1.0f);
 
-                if (this.gridMoveComponent.CheckMoveDir('A', this.transform.position))
+				if (this.gridMoveComponent.CheckMoveDir('A', this.transform.position))
                 {
                     this.gridMoveComponent.MoveByGrid('A');
                     animator.SetBool("isWalking", true);
@@ -74,10 +76,10 @@ public class PlayerMovement : MonoBehaviour
             else if (horizontalIput > 0)
             {
                 spriteRenderer.flipX = false;
-                boxCollider.offset = new Vector2(35.0f, 0.0f);
-                boxCollider.size = new Vector2(75.0f, 1.0f);
+				boxCollider.offset = new Vector2(60.0f, 0.0f);
+				boxCollider.size = new Vector2(30.0f, 1.0f);
 
-                if (this.gridMoveComponent.CheckMoveDir('D', this.transform.position))
+				if (this.gridMoveComponent.CheckMoveDir('D', this.transform.position))
                 {
                     this.gridMoveComponent.MoveByGrid('D');
                     animator.SetBool("isWalking", true);
@@ -86,8 +88,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (verticalInput > 0)
             {
-                boxCollider.offset = new Vector2(0.0f, 35.0f);
-                boxCollider.size = new Vector2(1.0f, 75.0f);
+                boxCollider.offset = new Vector2(0.0f, 60.0f);
+                boxCollider.size = new Vector2(1.0f, 30.0f);
 
                 if (this.gridMoveComponent.CheckMoveDir('W', this.transform.position))
                 {
@@ -98,10 +100,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (verticalInput < 0)
             {
-                boxCollider.offset = new Vector2(0.0f, -35.0f);
-                boxCollider.size = new Vector2(1.0f, 75.0f);
+				boxCollider.offset = new Vector2(0.0f, -60.0f);
+				boxCollider.size = new Vector2(1.0f, 30.0f);
 
-                if (this.gridMoveComponent.CheckMoveDir('S', this.transform.position))
+				if (this.gridMoveComponent.CheckMoveDir('S', this.transform.position))
                 {
                     this.gridMoveComponent.MoveByGrid('S');
                     animator.SetBool("isWalking", true);
@@ -123,9 +125,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Slime" || other.gameObject.tag == "Crate")
         {
-            if (GetComponent<PlayerLogic>().pickedUp && other.gameObject.tag == "Slime")
+            if (logicComponent.pickedUp && other.gameObject.tag == "Slime")
             {
-                GetComponent<PlayerLogic>().GivePickUp();
+				logicComponent.GivePickUp();
                 other.gameObject.GetComponent<SlimeLogic>().HealthUp();
             }
 

@@ -13,7 +13,12 @@ public class GameController : MonoBehaviour
     public int finalGameLevel;
     public int currGameLevel;
 
-    // Object Tracker
+	// Object Tracker
+
+	private GameObject winCanvas;
+	private GameObject lossCanvas;
+	private GameObject playerUI;
+		
 
     //public GameObject pPlayer;
     //public GameObject pSlime;
@@ -23,7 +28,7 @@ public class GameController : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+
         }else if (instance != this)
         {
             Destroy(this.gameObject);
@@ -33,40 +38,28 @@ public class GameController : MonoBehaviour
 	void Start ()
     {
         currGameLevel = 1;
-
-    }
+	}
 	
 	void Update ()
     {
-		
 	}
 
     public void LevelFailed()
-    {
-        currGameLevel = 1;
-        SceneManager.LoadScene("GameOverScene");
+	{
+		SceneManager.LoadScene("GameOverScene");
     }
 
     public void LevelPassed()
     {
-        if (currGameLevel != finalGameLevel)
-        {
-            // Get to the next level
-            currGameLevel++;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        else
-        {
-            // Go to final scene
-            currGameLevel = 1;
-            SceneManager.LoadScene("PrototypeEndScene");
-        }
+		winCanvas.SetActive(true);
+		playerUI.SetActive(false);
+		lossCanvas.SetActive(false);
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Level1");
-    }
+        SceneManager.LoadScene("Level2");
+	}
 
     public void QuitGame()
     {
@@ -75,6 +68,32 @@ public class GameController : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+		currGameLevel = 1;
+		SceneManager.LoadScene("MainMenu");
     }
+
+	public void RetryLevel()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		
+	}
+
+	public void NextLevel()
+	{
+		if (currGameLevel != finalGameLevel)
+		{
+			// Get to the next level
+			//currGameLevel++;
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+		}
+		else
+		{
+			// Go to final scene
+			//currGameLevel = 1;
+			SceneManager.LoadScene("PrototypeEndScene");
+
+		}
+	}
+
+
 }
