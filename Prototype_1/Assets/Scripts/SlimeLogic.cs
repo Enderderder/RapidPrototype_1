@@ -150,7 +150,7 @@ public class SlimeLogic : MonoBehaviour
         // Check if the slime is still alive
         if (!isSlimeAlive())
         {
-            GameController.instance.LevelFailed();
+            GameController.instance.GoToMainMenu();
             return;
         }
     }
