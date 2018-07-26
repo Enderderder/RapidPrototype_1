@@ -257,7 +257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Name
+  m_Text: Slime Temple
 --- !u!222 &1055927761
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -828,7 +828,7 @@ RectTransform:
   m_GameObject: {fileID: 1859047484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 0.9235128, y: 0.9235128, z: 0.9235128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1055927759}
   - {fileID: 1767470951}

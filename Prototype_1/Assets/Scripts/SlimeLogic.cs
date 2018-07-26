@@ -26,6 +26,8 @@ public class SlimeLogic : MonoBehaviour
     private Tilemap unWalkableTileMap;
     private GridLayout gridLayout;
 
+	private Animator animator;
+
 
     //====================================================================
 
@@ -34,7 +36,9 @@ public class SlimeLogic : MonoBehaviour
         // Get Component
 
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-    }
+		animator = GetComponentInChildren<Animator>();
+
+	}
 
     void Start()
     {
@@ -53,16 +57,21 @@ public class SlimeLogic : MonoBehaviour
         switch (slimeHealth)
         {
             case 1:
-                spriteRenderer.sprite = slimeSprite1;
+				animator.SetInteger("health", 1);
+
+				spriteRenderer.sprite = slimeSprite1;
                 break;
             case 2:
-                spriteRenderer.sprite = slimeSprite2;
+				animator.SetInteger("health", 2);
+				spriteRenderer.sprite = slimeSprite2;
                 break;
             case 3:
-                spriteRenderer.sprite = slimeSprite3;
+				animator.SetInteger("health", 3);
+				spriteRenderer.sprite = slimeSprite3;
                 break;
             default:
-                spriteRenderer.sprite = slimeSprite1;
+				animator.SetInteger("health", 1);
+				spriteRenderer.sprite = slimeSprite1;
                 break;
         }
     }
